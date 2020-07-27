@@ -13,6 +13,10 @@
 		D1FCF2F424CC4E1800BD5477 /* Audio_Diary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF2F224CC4E1800BD5477 /* Audio_Diary.xcdatamodeld */; };
 		D1FCF2F624CC4E1C00BD5477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1FCF2F524CC4E1C00BD5477 /* Assets.xcassets */; };
 		D1FCF2F924CC4E1C00BD5477 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1FCF2F724CC4E1C00BD5477 /* LaunchScreen.storyboard */; };
+		D1FCF30124CECD7B00BD5477 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF30024CECD7B00BD5477 /* RecordViewController.swift */; };
+		D1FCF30324CECD8A00BD5477 /* RecordingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF30224CECD8A00BD5477 /* RecordingsViewController.swift */; };
+		D1FCF30524CECD9B00BD5477 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF30424CECD9B00BD5477 /* StatsViewController.swift */; };
+		D1FCF30724CECDD300BD5477 /* DetailedRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF30624CECDD300BD5477 /* DetailedRecordingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		D1FCF2F524CC4E1C00BD5477 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1FCF2F824CC4E1C00BD5477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1FCF2FA24CC4E1C00BD5477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1FCF30024CECD7B00BD5477 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		D1FCF30224CECD8A00BD5477 /* RecordingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsViewController.swift; sourceTree = "<group>"; };
+		D1FCF30424CECD9B00BD5477 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		D1FCF30624CECDD300BD5477 /* DetailedRecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedRecordingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 		D1FCF2E824CC4E1800BD5477 /* Audio Diary */ = {
 			isa = PBXGroup;
 			children = (
+				D1FCF30824CECDD900BD5477 /* View Controllers */,
 				D1FCF2E924CC4E1800BD5477 /* AppDelegate.swift */,
 				D1FCF2EB24CC4E1800BD5477 /* SceneDelegate.swift */,
 				D1FCF2EF24CC4E1800BD5477 /* Main.storyboard */,
@@ -65,6 +74,17 @@
 				D1FCF2F224CC4E1800BD5477 /* Audio_Diary.xcdatamodeld */,
 			);
 			path = "Audio Diary";
+			sourceTree = "<group>";
+		};
+		D1FCF30824CECDD900BD5477 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D1FCF30024CECD7B00BD5477 /* RecordViewController.swift */,
+				D1FCF30224CECD8A00BD5477 /* RecordingsViewController.swift */,
+				D1FCF30424CECD9B00BD5477 /* StatsViewController.swift */,
+				D1FCF30624CECDD300BD5477 /* DetailedRecordingViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +158,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1FCF30724CECDD300BD5477 /* DetailedRecordingViewController.swift in Sources */,
 				D1FCF2EA24CC4E1800BD5477 /* AppDelegate.swift in Sources */,
 				D1FCF2F424CC4E1800BD5477 /* Audio_Diary.xcdatamodeld in Sources */,
 				D1FCF2EC24CC4E1800BD5477 /* SceneDelegate.swift in Sources */,
+				D1FCF30124CECD7B00BD5477 /* RecordViewController.swift in Sources */,
+				D1FCF30524CECD9B00BD5477 /* StatsViewController.swift in Sources */,
+				D1FCF30324CECD8A00BD5477 /* RecordingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
