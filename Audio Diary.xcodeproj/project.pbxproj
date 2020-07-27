@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D1FCF2EA24CC4E1800BD5477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF2E924CC4E1800BD5477 /* AppDelegate.swift */; };
 		D1FCF2EC24CC4E1800BD5477 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF2EB24CC4E1800BD5477 /* SceneDelegate.swift */; };
-		D1FCF2EE24CC4E1800BD5477 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF2ED24CC4E1800BD5477 /* ViewController.swift */; };
 		D1FCF2F124CC4E1800BD5477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1FCF2EF24CC4E1800BD5477 /* Main.storyboard */; };
 		D1FCF2F424CC4E1800BD5477 /* Audio_Diary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF2F224CC4E1800BD5477 /* Audio_Diary.xcdatamodeld */; };
 		D1FCF2F624CC4E1C00BD5477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1FCF2F524CC4E1C00BD5477 /* Assets.xcassets */; };
@@ -20,7 +19,6 @@
 		D1FCF2E624CC4E1800BD5477 /* Audio Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Audio Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1FCF2E924CC4E1800BD5477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1FCF2EB24CC4E1800BD5477 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D1FCF2ED24CC4E1800BD5477 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D1FCF2F024CC4E1800BD5477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1FCF2F324CC4E1800BD5477 /* Audio_Diary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Audio_Diary.xcdatamodel; sourceTree = "<group>"; };
 		D1FCF2F524CC4E1C00BD5477 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,7 +58,6 @@
 			children = (
 				D1FCF2E924CC4E1800BD5477 /* AppDelegate.swift */,
 				D1FCF2EB24CC4E1800BD5477 /* SceneDelegate.swift */,
-				D1FCF2ED24CC4E1800BD5477 /* ViewController.swift */,
 				D1FCF2EF24CC4E1800BD5477 /* Main.storyboard */,
 				D1FCF2F524CC4E1C00BD5477 /* Assets.xcassets */,
 				D1FCF2F724CC4E1C00BD5477 /* LaunchScreen.storyboard */,
@@ -141,7 +138,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1FCF2EE24CC4E1800BD5477 /* ViewController.swift in Sources */,
 				D1FCF2EA24CC4E1800BD5477 /* AppDelegate.swift in Sources */,
 				D1FCF2F424CC4E1800BD5477 /* Audio_Diary.xcdatamodeld in Sources */,
 				D1FCF2EC24CC4E1800BD5477 /* SceneDelegate.swift in Sources */,
