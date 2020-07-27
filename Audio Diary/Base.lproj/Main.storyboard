@@ -17,7 +17,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="QLX-0A-rIw"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Stats" id="N9u-eq-uJ0"/>
+                    <tabBarItem key="tabBarItem" title="Stats" image="chart.pie.fill" catalog="system" id="N9u-eq-uJ0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zdG-se-K8o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -33,7 +33,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="OIg-9K-eSv"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Record" id="Tht-V4-u67"/>
+                    <tabBarItem key="tabBarItem" title="Record" image="stop.circle" catalog="system" id="Tht-V4-u67"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17k-QN-qMN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -47,6 +47,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.8783934387575234" green="1" blue="0.97253622194687483" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="I0b-Ty-Oll" kind="relationship" relationship="viewControllers" id="3ri-c6-U5r"/>
@@ -118,11 +119,11 @@
             </objects>
             <point key="canvasLocation" x="2557" y="78"/>
         </scene>
-        <!--Item-->
+        <!--Recordings-->
         <scene sceneID="fl4-fj-7Fx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="teu-eK-ocF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="52F-aa-V27"/>
+                    <tabBarItem key="tabBarItem" title="Recordings" image="folder" catalog="system" id="52F-aa-V27"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="8wT-66-2Tx">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -138,4 +139,9 @@
             <point key="canvasLocation" x="719" y="78"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="chart.pie.fill" catalog="system" width="128" height="124"/>
+        <image name="folder" catalog="system" width="128" height="95"/>
+        <image name="stop.circle" catalog="system" width="128" height="121"/>
+    </resources>
 </document>
