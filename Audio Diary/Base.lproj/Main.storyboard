@@ -10,7 +10,7 @@
         <!--Stats-->
         <scene sceneID="vGq-xM-5hX">
             <objects>
-                <viewController id="rt0-Dk-jPr" customClass="StatsViewController" customModule="Audio_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rt0-Dk-jPr" customClass="StatsViewController" customModule="AudioDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Aoz-Es-CZ3" customClass="UIActionSheet">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
         <!--Record-->
         <scene sceneID="COe-T7-Kya">
             <objects>
-                <viewController id="I0b-Ty-Oll" customClass="RecordViewController" customModule="Audio_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="I0b-Ty-Oll" customClass="RecordViewController" customModule="AudioDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zAj-yc-sns">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,17 +42,22 @@
         <!--Tab Bar Controller-->
         <scene sceneID="26g-ag-we4">
             <objects>
-                <tabBarController modalTransitionStyle="crossDissolve" id="xBI-Ff-RMS" sceneMemberID="viewController">
+                <tabBarController modalTransitionStyle="crossDissolve" id="xBI-Ff-RMS" customClass="TabBarController" customModule="AudioDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="w5y-Zw-3Pz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.8783934387575234" green="1" blue="0.97253622194687483" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="defaultIndex">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
+                        <segue destination="teu-eK-ocF" kind="relationship" relationship="viewControllers" id="wCa-mT-xpJ"/>
                         <segue destination="I0b-Ty-Oll" kind="relationship" relationship="viewControllers" id="3ri-c6-U5r"/>
                         <segue destination="rt0-Dk-jPr" kind="relationship" relationship="viewControllers" id="yAU-1N-tQf"/>
-                        <segue destination="teu-eK-ocF" kind="relationship" relationship="viewControllers" id="wCa-mT-xpJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lcr-99-Evy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -62,7 +67,7 @@
         <!--Recordings View Controller-->
         <scene sceneID="YOv-g7-Z8M">
             <objects>
-                <viewController id="cY3-hj-bqV" customClass="RecordingsViewController" customModule="Audio_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cY3-hj-bqV" customClass="RecordingsViewController" customModule="AudioDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cY0-Cp-HS2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
