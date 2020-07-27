@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D1FCF2E624CC4E1800BD5477 /* Audio Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Audio Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1FCF2E624CC4E1800BD5477 /* AudioDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1FCF2E924CC4E1800BD5477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1FCF2EB24CC4E1800BD5477 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D1FCF2F024CC4E1800BD5477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 		D1FCF2E724CC4E1800BD5477 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D1FCF2E624CC4E1800BD5477 /* Audio Diary.app */,
+				D1FCF2E624CC4E1800BD5477 /* AudioDiary.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,9 +90,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D1FCF2E524CC4E1800BD5477 /* Audio Diary */ = {
+		D1FCF2E524CC4E1800BD5477 /* AudioDiary */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D1FCF2FD24CC4E1C00BD5477 /* Build configuration list for PBXNativeTarget "Audio Diary" */;
+			buildConfigurationList = D1FCF2FD24CC4E1C00BD5477 /* Build configuration list for PBXNativeTarget "AudioDiary" */;
 			buildPhases = (
 				D1FCF2E224CC4E1800BD5477 /* Sources */,
 				D1FCF2E324CC4E1800BD5477 /* Frameworks */,
@@ -102,9 +102,9 @@
 			);
 			dependencies = (
 			);
-			name = "Audio Diary";
+			name = AudioDiary;
 			productName = "Audio Diary";
-			productReference = D1FCF2E624CC4E1800BD5477 /* Audio Diary.app */;
+			productReference = D1FCF2E624CC4E1800BD5477 /* AudioDiary.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -122,7 +122,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D1FCF2E124CC4E1800BD5477 /* Build configuration list for PBXProject "Audio Diary" */;
+			buildConfigurationList = D1FCF2E124CC4E1800BD5477 /* Build configuration list for PBXProject "AudioDiary" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -135,7 +135,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D1FCF2E524CC4E1800BD5477 /* Audio Diary */,
+				D1FCF2E524CC4E1800BD5477 /* AudioDiary */,
 			);
 		};
 /* End PBXProject section */
@@ -315,7 +315,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wenogk.Audio-Diary";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AudioDiary;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -332,7 +332,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wenogk.Audio-Diary";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AudioDiary;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -341,7 +341,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D1FCF2E124CC4E1800BD5477 /* Build configuration list for PBXProject "Audio Diary" */ = {
+		D1FCF2E124CC4E1800BD5477 /* Build configuration list for PBXProject "AudioDiary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1FCF2FB24CC4E1C00BD5477 /* Debug */,
@@ -350,7 +350,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D1FCF2FD24CC4E1C00BD5477 /* Build configuration list for PBXNativeTarget "Audio Diary" */ = {
+		D1FCF2FD24CC4E1C00BD5477 /* Build configuration list for PBXNativeTarget "AudioDiary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1FCF2FE24CC4E1C00BD5477 /* Debug */,

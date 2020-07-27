@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Audio Diary.xcodeproj">
+      location = "self:/Users/wenogk/Documents/code/swift/Audio Diary/AudioDiary.xcodeproj">
    </FileRef>
 </Workspace>

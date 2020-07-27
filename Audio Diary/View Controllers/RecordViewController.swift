@@ -7,16 +7,46 @@
 //
 
 import UIKit
+import AVFoundation
 
 class RecordViewController: UIViewController {
 
+    var recordingSession: AVAudioSession!
+    var audioRecorder: AVAudioRecorder!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+    
+       // setupAudioRecording()
     }
     
+    // MARK: - Audio Recording Functions
+    
+    func setupAudioRecording() {
+        // Check if recording permission is given and then allow for visible record button
+        recordingSession = AVAudioSession.sharedInstance()
 
+        do {
+            try recordingSession.setCategory(.playAndRecord, mode: .default)
+            try recordingSession.setActive(true)
+            recordingSession.requestRecordPermission() { [unowned self] allowed in
+                DispatchQueue.main.async {
+                    if allowed {
+                        //self.loadRecordingUI()
+                    } else {
+                        // failed to record!
+                    }
+                }
+            }
+        } catch {
+            // failed to record!
+        }
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 
