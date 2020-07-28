@@ -69,7 +69,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         print(recordingState)
     }
     
-    // MARK: - Core Data Functions
+    // MARK: - Core Data Function
     
     func createNewAudioItem(filepath filepath:URL, dateTime date:Date, transcribed transcribed: String) {
         

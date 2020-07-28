@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class RecordingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -38,7 +39,13 @@ class RecordingsViewController: UIViewController, UITableViewDataSource, UITable
     func fetchAudioItems() {
         
         do {
-            self.audioItems = try context.fetch(AudioItem.fetchRequest())
+            let request = AudioItem.fetchRequest() as NSFetchRequest<AudioItem>
+            
+            let sort = NSSortDescriptor(key: "dateTime", ascending: false)
+            
+            request.sortDescriptors = [sort]
+            
+            self.audioItems = try context.fetch(request)
             
             DispatchQueue.main.async {
                 self.tableView.reloadData();
@@ -62,7 +69,7 @@ class RecordingsViewController: UIViewController, UITableViewDataSource, UITable
         
         let audioItem = self.audioItems![indexPath.row]
         
-        cell.textLabel?.text = "item \(audioItem.audioFilePath)";
+        cell.textLabel?.text = "\(audioItem.dateTime!)";
         return cell;
         
      }
