@@ -13,6 +13,10 @@ class RecordingsViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
+    //Reference to managed object context
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
+    
+    var audioItems:[AudioItem]?;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,18 +25,46 @@ class RecordingsViewController: UIViewController, UITableViewDataSource, UITable
         title = "Your entries"
         tableView.delegate = self;
         tableView.dataSource = self;
+        
+        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        //Get audio items from Core Data
+        fetchAudioItems();
+    }
+    // MARK: - Core Data Fetch Methods
+    
+    func fetchAudioItems() {
+        
+        do {
+            self.audioItems = try context.fetch(AudioItem.fetchRequest())
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData();
+            }
+            
+        } catch {
+            
+        }
+        
+        
+    }
     // MARK: - Table view methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5;
+        return self.audioItems?.count ?? 0;
      }
      
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "recordedItem", for: indexPath)
-        cell.textLabel?.text = "item \(indexPath.row)";
+        
+        let audioItem = self.audioItems![indexPath.row]
+        
+        cell.textLabel?.text = "item \(audioItem.audioFilePath)";
         return cell;
+        
      }
      
     

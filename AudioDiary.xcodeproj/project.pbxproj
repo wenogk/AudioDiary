@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D1835FE824CF83760035E791 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1835FE724CF83760035E791 /* TabBarController.swift */; };
+		D1835FF624D0D78B0035E791 /* AudioItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1835FF424D0D78B0035E791 /* AudioItem+CoreDataClass.swift */; };
+		D1835FF724D0D78B0035E791 /* AudioItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1835FF524D0D78B0035E791 /* AudioItem+CoreDataProperties.swift */; };
 		D1FCF2EA24CC4E1800BD5477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF2E924CC4E1800BD5477 /* AppDelegate.swift */; };
 		D1FCF2EC24CC4E1800BD5477 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF2EB24CC4E1800BD5477 /* SceneDelegate.swift */; };
 		D1FCF2F124CC4E1800BD5477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1FCF2EF24CC4E1800BD5477 /* Main.storyboard */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		D1835FE724CF83760035E791 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		D1835FF424D0D78B0035E791 /* AudioItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D1835FF524D0D78B0035E791 /* AudioItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D1FCF2E624CC4E1800BD5477 /* AudioDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1FCF2E924CC4E1800BD5477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1FCF2EB24CC4E1800BD5477 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D1835FEF24D0CF510035E791 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D1835FF424D0D78B0035E791 /* AudioItem+CoreDataClass.swift */,
+				D1835FF524D0D78B0035E791 /* AudioItem+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D1FCF2DD24CC4E1800BD5477 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +79,7 @@
 		D1FCF2E824CC4E1800BD5477 /* Audio Diary */ = {
 			isa = PBXGroup;
 			children = (
+				D1835FEF24D0CF510035E791 /* Model */,
 				D1FCF30824CECDD900BD5477 /* View Controllers */,
 				D1FCF2E924CC4E1800BD5477 /* AppDelegate.swift */,
 				D1FCF2EB24CC4E1800BD5477 /* SceneDelegate.swift */,
@@ -162,7 +176,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1FCF30724CECDD300BD5477 /* DetailedRecordingViewController.swift in Sources */,
+				D1835FF624D0D78B0035E791 /* AudioItem+CoreDataClass.swift in Sources */,
 				D1835FE824CF83760035E791 /* TabBarController.swift in Sources */,
+				D1835FF724D0D78B0035E791 /* AudioItem+CoreDataProperties.swift in Sources */,
 				D1FCF2EA24CC4E1800BD5477 /* AppDelegate.swift in Sources */,
 				D1FCF2F424CC4E1800BD5477 /* Audio_Diary.xcdatamodeld in Sources */,
 				D1FCF2EC24CC4E1800BD5477 /* SceneDelegate.swift in Sources */,

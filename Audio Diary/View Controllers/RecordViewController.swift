@@ -23,15 +23,22 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet var recordButton: UIButton!
     
     @IBOutlet var timerLabel: UILabel!
+    
+    //Recording related instance variables
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var recordedAudio: AVAudioPlayer?
     var recordingState: recordingStates = .notRecording;
     
+    //Timer instance variables
     weak var timer: Timer?
     var startTime: Double = 0
     var time: Double = 0
     var previousTime:Double?
+    
+    //Reference to managed object context
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,43 +68,24 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         }
         print(recordingState)
     }
-    // MARK: - Timer function
-    func startTimer(_ startTimeVal:Double) {
-        startTime = startTimeVal;
-        timer = Timer.scheduledTimer(timeInterval: 0.05,
-                                     target: self,
-                                     selector: #selector(advanceTimer(timer:)),
-                                     userInfo: nil,
-                                     repeats: true)
-    }
     
-    func pauseTimer() {
-        previousTime = startTime;
-        timer?.invalidate()
-    }
+    // MARK: - Core Data Functions
     
-    func stopTimer() {
-        timer?.invalidate()
-    }
-    @objc func advanceTimer(timer: Timer) {
-
-      //Total time since timer started, in seconds
-      time = Date().timeIntervalSinceReferenceDate - startTime
-
-      //The rest of your code goes here
+    func createNewAudioItem(filepath filepath:URL, dateTime date:Date, transcribed transcribed: String) {
         
-      //Convert the time to a string with 2 decimal places
+        let newAudioItem = AudioItem(context: self.context)
         
-        let hours = Int(time) / 3600
-        let minutes = Int(time) / 60 % 60
-        let seconds = Int(time) % 60
-        let timeString =  String(format:"%02i:%02i", minutes, seconds)
-      //let timeString = String(format: "%.2f", time)
-
-      //Display the time string to a label in our view controller
-      timerLabel.text = timeString
+        newAudioItem.audioFilePath = filepath;
+        newAudioItem.dateTime = date;
+        newAudioItem.transcribed = transcribed;
+        
+        do {
+            try self.context.save()
+        } catch {
+            print("error saving data")
+        }
+        
     }
-    
     
     // MARK: - Audio Recording Functions
     
@@ -183,8 +171,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
                            // couldn't load file :(
                        }
             recordingState = .notRecording
-            print("finished recording")
+            
             stopTimer()
+            let dateTime = Date();
+            createNewAudioItem(filepath: url, dateTime: dateTime, transcribed: "sample")
+            
+            
             //recordButton.setTitle("Tap to Re-record", for: .normal)
         } else {
             //recordButton.setTitle("Tap to Record", for: .normal)
@@ -201,6 +193,44 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         if !flag {
             finishRecording(success: false)
         }
+    }
+    
+    // MARK: - Timer functions
+    
+    func startTimer(_ startTimeVal:Double) {
+        startTime = startTimeVal;
+        timer = Timer.scheduledTimer(timeInterval: 0.05,
+                                     target: self,
+                                     selector: #selector(advanceTimer(timer:)),
+                                     userInfo: nil,
+                                     repeats: true)
+    }
+    
+    func pauseTimer() {
+        previousTime = startTime;
+        timer?.invalidate()
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+    }
+    @objc func advanceTimer(timer: Timer) {
+
+      //Total time since timer started, in seconds
+      time = Date().timeIntervalSinceReferenceDate - startTime
+
+      //The rest of your code goes here
+        
+      //Convert the time to a string with 2 decimal places
+        
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        let timeString =  String(format:"%02i:%02i", minutes, seconds)
+      //let timeString = String(format: "%.2f", time)
+
+      //Display the time string to a label in our view controller
+      timerLabel.text = timeString
     }
     
     
