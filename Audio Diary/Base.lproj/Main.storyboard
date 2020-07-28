@@ -46,6 +46,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPB-gx-0x7">
                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
                                                 <state key="normal" image="stop.circle" catalog="system"/>
+                                                <connections>
+                                                    <action selector="stopRecordingTap:" destination="I0b-Ty-Oll" eventType="touchUpInside" id="FnW-NN-hpD"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jks-et-ark">
                                                 <rect key="frame" x="30" y="0.0" width="22" height="22"/>

@@ -10,7 +10,14 @@ import UIKit
 import AVFoundation
 
 class RecordViewController: UIViewController, AVAudioRecorderDelegate {
-
+    
+    
+    
+    enum recordingStates {
+        case notRecording
+        case recording
+        case paused
+    }
     
     
     @IBOutlet var recordButton: UIButton!
@@ -18,6 +25,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var recordedAudio: AVAudioPlayer?
+    var recordingState: recordingStates = .notRecording;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,14 +35,25 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
        setupAudioRecording()
     }
     
-    @IBAction func onRecordButtonTap(_ sender: Any) {
-        // Run record and stop recording logic here
+    @IBAction func stopRecordingTap(_ sender: Any) {
         
-        if audioRecorder == nil {
-            startRecording()
-        } else {
+        if(recordingState == .recording) {
             finishRecording(success: true)
         }
+        print(recordingState)
+    }
+    
+    @IBAction func onRecordButtonTap(_ sender: Any) {
+        // Run record and stop recording logic here
+       
+        if recordingState == .notRecording{
+            startRecording()
+        } else if recordingState == .paused {
+            resumeRecording()
+        } else if recordingState == .recording {
+            pauseRecording()
+        }
+        print(recordingState)
     }
     
     // MARK: - Audio Recording Functions
@@ -61,6 +81,24 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
+    func pauseRecording() {
+        
+        if recordingState == .recording {
+            audioRecorder?.pause()
+            recordingState = .paused
+        }
+        
+    }
+    
+    func resumeRecording() {
+        
+        if recordingState == .paused {
+            audioRecorder?.record()
+            recordingState = .recording
+        }
+        
+    }
+    
     func startRecording() {
         let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
 
@@ -75,6 +113,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
+            recordingState = .recording;
 
             //recordButton.setImage(UIImage(contentsOfFile: ""), for: .selected)
             print("started recording")
@@ -95,6 +134,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
                        } catch {
                            // couldn't load file :(
                        }
+            recordingState = .notRecording
             print("finished recording")
             //recordButton.setTitle("Tap to Re-record", for: .normal)
         } else {
