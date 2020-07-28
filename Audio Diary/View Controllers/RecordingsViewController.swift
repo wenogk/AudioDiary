@@ -66,6 +66,30 @@ class RecordingsViewController: UIViewController, UITableViewDataSource, UITable
         return cell;
         
      }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+            
+            //which audio item to remove
+            let audioItemToRemove = self.audioItems![indexPath.row];
+            
+            //delete it from the context
+            self.context.delete(audioItemToRemove)
+            
+            do {
+                //save the context
+                try self.context.save()
+            } catch {
+                
+            }
+            
+            self.fetchAudioItems()
+            
+        }
+        
+        return UISwipeActionsConfiguration(actions: [action])
+    }
      
     
 
