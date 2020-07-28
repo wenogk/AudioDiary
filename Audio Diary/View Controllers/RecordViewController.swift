@@ -11,6 +11,10 @@ import AVFoundation
 
 class RecordViewController: UIViewController {
 
+    
+    
+    @IBOutlet var recordButton: UIButton!
+    
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     
@@ -19,13 +23,21 @@ class RecordViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     
-       // setupAudioRecording()
+       setupAudioRecording()
+    }
+    
+    @IBAction func onRecordButtonTap(_ sender: Any) {
+        // Run record and stop recording logic here
+        
+        print("hi")
     }
     
     // MARK: - Audio Recording Functions
     
     func setupAudioRecording() {
+        
         // Check if recording permission is given and then allow for visible record button
+        
         recordingSession = AVAudioSession.sharedInstance()
 
         do {
