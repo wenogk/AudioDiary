@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class RecordViewController: UIViewController {
+class RecordViewController: UIViewController, AVAudioRecorderDelegate {
 
     
     
@@ -17,7 +17,7 @@ class RecordViewController: UIViewController {
     
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
-    
+    var recordedAudio: AVAudioPlayer?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +29,11 @@ class RecordViewController: UIViewController {
     @IBAction func onRecordButtonTap(_ sender: Any) {
         // Run record and stop recording logic here
         
-        print("hi")
+        if audioRecorder == nil {
+            startRecording()
+        } else {
+            finishRecording(success: true)
+        }
     }
     
     // MARK: - Audio Recording Functions
@@ -56,6 +60,61 @@ class RecordViewController: UIViewController {
             // failed to record!
         }
     }
+    
+    func startRecording() {
+        let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+
+        let settings = [
+            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+            AVSampleRateKey: 12000,
+            AVNumberOfChannelsKey: 1,
+            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+        ]
+
+        do {
+            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
+            audioRecorder.delegate = self
+            audioRecorder.record()
+
+            //recordButton.setImage(UIImage(contentsOfFile: ""), for: .selected)
+            print("started recording")
+        } catch {
+            finishRecording(success: false)
+        }
+    }
+    
+    func finishRecording(success: Bool) {
+        audioRecorder.stop()
+        audioRecorder = nil
+
+        if success {
+            let url = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+                       do {
+                          recordedAudio = try AVAudioPlayer(contentsOf: url)
+                           recordedAudio?.play()
+                       } catch {
+                           // couldn't load file :(
+                       }
+            print("finished recording")
+            //recordButton.setTitle("Tap to Re-record", for: .normal)
+        } else {
+            //recordButton.setTitle("Tap to Record", for: .normal)
+            // recording failed :(
+        }
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        if !flag {
+            finishRecording(success: false)
+        }
+    }
+    
+    
     
     
     
