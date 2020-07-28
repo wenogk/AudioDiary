@@ -31,6 +31,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     weak var timer: Timer?
     var startTime: Double = 0
     var time: Double = 0
+    var previousTime:Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,8 +62,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         print(recordingState)
     }
     // MARK: - Timer function
-    func startTimer() {
-        startTime = Date().timeIntervalSinceReferenceDate
+    func startTimer(_ startTimeVal:Double) {
+        startTime = startTimeVal;
         timer = Timer.scheduledTimer(timeInterval: 0.05,
                                      target: self,
                                      selector: #selector(advanceTimer(timer:)),
@@ -71,7 +72,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func pauseTimer() {
-        
+        previousTime = startTime;
+        timer?.invalidate()
     }
     
     func stopTimer() {
@@ -83,13 +85,19 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
       time = Date().timeIntervalSinceReferenceDate - startTime
 
       //The rest of your code goes here
-
+        
       //Convert the time to a string with 2 decimal places
-      let timeString = String(format: "%.2f", time)
+        
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        let timeString =  String(format:"%02i:%02i", minutes, seconds)
+      //let timeString = String(format: "%.2f", time)
 
       //Display the time string to a label in our view controller
       timerLabel.text = timeString
     }
+    
     
     // MARK: - Audio Recording Functions
     
@@ -119,6 +127,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     func pauseRecording() {
         
         if recordingState == .recording {
+            pauseTimer()
             audioRecorder?.pause()
             recordingState = .paused
         }
@@ -128,6 +137,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     func resumeRecording() {
         
         if recordingState == .paused {
+            startTimer(previousTime!);
             audioRecorder?.record()
             recordingState = .recording
         }
@@ -152,7 +162,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             audioRecorder.delegate = self
             audioRecorder.record()
             recordingState = .recording;
-            startTimer()
+            startTimer(Date().timeIntervalSinceReferenceDate)
             //recordButton.setImage(UIImage(contentsOfFile: ""), for: .selected)
             print("started recording")
         } catch {
