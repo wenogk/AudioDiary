@@ -22,10 +22,15 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBOutlet var recordButton: UIButton!
     
+    @IBOutlet var timerLabel: UILabel!
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var recordedAudio: AVAudioPlayer?
     var recordingState: recordingStates = .notRecording;
+    
+    weak var timer: Timer?
+    var startTime: Double = 0
+    var time: Double = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +42,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBAction func stopRecordingTap(_ sender: Any) {
         
-        if(recordingState == .recording) {
+        if(recordingState == .recording || recordingState == .paused) {
             finishRecording(success: true)
         }
         print(recordingState)
@@ -54,6 +59,36 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             pauseRecording()
         }
         print(recordingState)
+    }
+    // MARK: - Timer function
+    func startTimer() {
+        startTime = Date().timeIntervalSinceReferenceDate
+        timer = Timer.scheduledTimer(timeInterval: 0.05,
+                                     target: self,
+                                     selector: #selector(advanceTimer(timer:)),
+                                     userInfo: nil,
+                                     repeats: true)
+    }
+    
+    func pauseTimer() {
+        
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+    }
+    @objc func advanceTimer(timer: Timer) {
+
+      //Total time since timer started, in seconds
+      time = Date().timeIntervalSinceReferenceDate - startTime
+
+      //The rest of your code goes here
+
+      //Convert the time to a string with 2 decimal places
+      let timeString = String(format: "%.2f", time)
+
+      //Display the time string to a label in our view controller
+      timerLabel.text = timeString
     }
     
     // MARK: - Audio Recording Functions
@@ -100,6 +135,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func startRecording() {
+        
+        
         let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
 
         let settings = [
@@ -110,11 +147,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         ]
 
         do {
+            
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
             recordingState = .recording;
-
+            startTimer()
             //recordButton.setImage(UIImage(contentsOfFile: ""), for: .selected)
             print("started recording")
         } catch {
@@ -125,7 +163,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     func finishRecording(success: Bool) {
         audioRecorder.stop()
         audioRecorder = nil
-
+        
         if success {
             let url = getDocumentsDirectory().appendingPathComponent("recording.m4a")
                        do {
@@ -136,6 +174,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
                        }
             recordingState = .notRecording
             print("finished recording")
+            stopTimer()
             //recordButton.setTitle("Tap to Re-record", for: .normal)
         } else {
             //recordButton.setTitle("Tap to Record", for: .normal)

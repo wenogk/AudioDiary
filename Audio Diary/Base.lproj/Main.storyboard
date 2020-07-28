@@ -72,6 +72,7 @@
                     <tabBarItem key="tabBarItem" title="Record" image="stop.circle" catalog="system" id="Tht-V4-u67"/>
                     <connections>
                         <outlet property="recordButton" destination="jks-et-ark" id="jE1-mq-VBX"/>
+                        <outlet property="timerLabel" destination="DPs-OS-SWW" id="tgu-XJ-GxH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17k-QN-qMN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
