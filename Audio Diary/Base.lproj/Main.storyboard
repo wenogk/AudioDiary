@@ -31,18 +31,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jks-et-ark">
-                                <rect key="frame" x="196" y="641" width="22" height="22"/>
-                                <state key="normal" image="star.fill" catalog="system"/>
-                                <connections>
-                                    <action selector="onRecordButtonTap:" destination="I0b-Ty-Oll" eventType="touchUpInside" id="Xlg-1d-Zyd"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eYQ-IT-nK6">
+                                <rect key="frame" x="152.5" y="583" width="109.5" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPs-OS-SWW">
+                                        <rect key="frame" x="0.0" y="0.0" width="109.5" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SVs-ip-3oo">
+                                        <rect key="frame" x="28.5" y="58" width="52" height="22"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPB-gx-0x7">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
+                                                <state key="normal" image="stop.circle" catalog="system"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jks-et-ark">
+                                                <rect key="frame" x="30" y="0.0" width="22" height="22"/>
+                                                <state key="normal" image="star.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="onRecordButtonTap:" destination="I0b-Ty-Oll" eventType="touchUpInside" id="Xlg-1d-Zyd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="jks-et-ark" firstAttribute="centerX" secondItem="zAj-yc-sns" secondAttribute="centerX" id="32G-7h-9uS"/>
-                            <constraint firstItem="OIg-9K-eSv" firstAttribute="bottom" secondItem="jks-et-ark" secondAttribute="bottom" constant="150" id="P07-go-PX9"/>
+                            <constraint firstItem="eYQ-IT-nK6" firstAttribute="centerX" secondItem="zAj-yc-sns" secondAttribute="centerX" id="mJc-tV-5BO"/>
+                            <constraint firstItem="OIg-9K-eSv" firstAttribute="bottom" secondItem="eYQ-IT-nK6" secondAttribute="bottom" constant="150" id="wSP-4d-7gI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OIg-9K-eSv"/>
                     </view>
