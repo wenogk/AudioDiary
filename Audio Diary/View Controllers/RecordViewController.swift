@@ -8,9 +8,9 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 class RecordViewController: UIViewController, AVAudioRecorderDelegate {
-    
     
     
     enum recordingStates {
@@ -39,13 +39,18 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     //Reference to managed object context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
     
+    var audioItems:[AudioItem]?;
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-    
-       setupAudioRecording()
+        fetchAudios()
+        setupAudioRecording()
+        
     }
     
     @IBAction func stopRecordingTap(_ sender: Any) {
@@ -58,7 +63,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBAction func onRecordButtonTap(_ sender: Any) {
         // Run record and stop recording logic here
-       
+        
         if recordingState == .notRecording{
             startRecording()
         } else if recordingState == .paused {
@@ -71,7 +76,15 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     
     // MARK: - Core Data Function
     
-    func createNewAudioItem(filepath filepath:URL, dateTime date:Date, transcribed transcribed: String) {
+    func fetchAudios() {
+        do {
+                   self.audioItems = try context.fetch(AudioItem.fetchRequest())
+               } catch {
+                   
+               }
+    }
+    
+    func createNewAudioItem(filepath:URL, dateTime date:Date, transcribed: String) {
         
         let newAudioItem = AudioItem(context: self.context)
         
@@ -94,7 +107,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         // Check if recording permission is given and then allow for visible record button
         
         recordingSession = AVAudioSession.sharedInstance()
-
+        
         do {
             try recordingSession.setCategory(.playAndRecord, mode: .default)
             try recordingSession.setActive(true)
@@ -134,16 +147,16 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     
     func startRecording() {
         
+        let audiosCount = audioItems?.count ?? 0;
+        let audioFilename = getDocumentsDirectory().appendingPathComponent("\(Constants.AUDIO_FILE_NAME_PREFIX)_\(audiosCount).m4a")
         
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
-
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
             AVSampleRateKey: 12000,
             AVNumberOfChannelsKey: 1,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
-
+        
         do {
             
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
@@ -163,18 +176,20 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder = nil
         
         if success {
-            let url = getDocumentsDirectory().appendingPathComponent("recording.m4a")
-                       do {
-                          recordedAudio = try AVAudioPlayer(contentsOf: url)
-                           recordedAudio?.play()
-                       } catch {
-                           // couldn't load file :(
-                       }
+            let audiosCount = audioItems?.count ?? 0;
+            let url = getDocumentsDirectory().appendingPathComponent("\(Constants.AUDIO_FILE_NAME_PREFIX)_\(audiosCount).m4a")
+            do {
+                recordedAudio = try AVAudioPlayer(contentsOf: url)
+                recordedAudio?.play()
+            } catch {
+                // couldn't load file :(
+            }
             recordingState = .notRecording
             
             stopTimer()
             let dateTime = Date();
             createNewAudioItem(filepath: url, dateTime: dateTime, transcribed: "sample")
+            fetchAudios()
             
             
             //recordButton.setTitle("Tap to Re-record", for: .normal)
@@ -215,22 +230,22 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         timer?.invalidate()
     }
     @objc func advanceTimer(timer: Timer) {
-
-      //Total time since timer started, in seconds
-      time = Date().timeIntervalSinceReferenceDate - startTime
-
-      //The rest of your code goes here
         
-      //Convert the time to a string with 2 decimal places
+        //Total time since timer started, in seconds
+        time = Date().timeIntervalSinceReferenceDate - startTime
+        
+        //The rest of your code goes here
+        
+        //Convert the time to a string with 2 decimal places
         
         let hours = Int(time) / 3600
         let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
         let timeString =  String(format:"%02i:%02i", minutes, seconds)
-      //let timeString = String(format: "%.2f", time)
-
-      //Display the time string to a label in our view controller
-      timerLabel.text = timeString
+        //let timeString = String(format: "%.2f", time)
+        
+        //Display the time string to a label in our view controller
+        timerLabel.text = timeString
     }
     
     
@@ -238,13 +253,13 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

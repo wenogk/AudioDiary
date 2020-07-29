@@ -10,6 +10,7 @@
 		D1835FE824CF83760035E791 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1835FE724CF83760035E791 /* TabBarController.swift */; };
 		D1835FF624D0D78B0035E791 /* AudioItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1835FF424D0D78B0035E791 /* AudioItem+CoreDataClass.swift */; };
 		D1835FF724D0D78B0035E791 /* AudioItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1835FF524D0D78B0035E791 /* AudioItem+CoreDataProperties.swift */; };
+		D1835FF924D174CB0035E791 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1835FF824D174CB0035E791 /* Constants.swift */; };
 		D1FCF2EA24CC4E1800BD5477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF2E924CC4E1800BD5477 /* AppDelegate.swift */; };
 		D1FCF2EC24CC4E1800BD5477 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF2EB24CC4E1800BD5477 /* SceneDelegate.swift */; };
 		D1FCF2F124CC4E1800BD5477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1FCF2EF24CC4E1800BD5477 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		D1835FE724CF83760035E791 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D1835FF424D0D78B0035E791 /* AudioItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D1835FF524D0D78B0035E791 /* AudioItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D1835FF824D174CB0035E791 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D1FCF2E624CC4E1800BD5477 /* AudioDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1FCF2E924CC4E1800BD5477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1FCF2EB24CC4E1800BD5477 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				D1FCF2F724CC4E1C00BD5477 /* LaunchScreen.storyboard */,
 				D1FCF2FA24CC4E1C00BD5477 /* Info.plist */,
 				D1FCF2F224CC4E1800BD5477 /* Audio_Diary.xcdatamodeld */,
+				D1835FF824D174CB0035E791 /* Constants.swift */,
 			);
 			path = "Audio Diary";
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1FCF30724CECDD300BD5477 /* DetailedRecordingViewController.swift in Sources */,
+				D1835FF924D174CB0035E791 /* Constants.swift in Sources */,
 				D1835FF624D0D78B0035E791 /* AudioItem+CoreDataClass.swift in Sources */,
 				D1835FE824CF83760035E791 /* TabBarController.swift in Sources */,
 				D1835FF724D0D78B0035E791 /* AudioItem+CoreDataProperties.swift in Sources */,
