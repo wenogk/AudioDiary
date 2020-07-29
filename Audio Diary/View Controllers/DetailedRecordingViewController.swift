@@ -7,13 +7,52 @@
 //
 
 import UIKit
+import AVFoundation
 
 class DetailedRecordingViewController: UIViewController {
-
+    
+    var audioItem:AudioItem?;
+    
+    var audioPlayer: AVAudioPlayer?
+    
+    @IBOutlet var titleLabel: UILabel!
+    
+    
+    
+    @IBOutlet var transcribedText: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        //Prevent further execution if audioItem is empty
+        guard audioItem != nil else {
+            return;
+        }
+        
+        //Set title label and transcribed text view to audio item info
+        titleLabel.text = "\(audioItem!.dateTime!)"
+        transcribedText.text = String(audioItem!.transcribed!)
+        
+    }
+    
+    @IBAction func playButtonTapped(_ sender: Any) {
+        
+        //Prevent further execution if audioItem is empty
+        guard audioItem != nil else {
+            return;
+        }
+        
+        //call playAudio function to play the current audio
+        playAudio(url: audioItem!.audioFilePath!);
+    }
+    
+    func playAudio(url: URL) {
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+        } catch {
+            // couldn't load file :(
+        }
     }
     
 

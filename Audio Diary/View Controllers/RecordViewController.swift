@@ -30,6 +30,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     var audioRecorder: AVAudioRecorder!
     var recordedAudio: AVAudioPlayer?
     var recordingState: recordingStates = .notRecording;
+    var audioFilename: URL!
     
     //Timer instance variables
     weak var timer: Timer?
@@ -189,7 +190,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     func startRecording() {
         
         let audiosCount = audioItems?.count ?? 0;
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("\(Constants.AUDIO_FILE_NAME_PREFIX)_\(audiosCount+1).m4a")
+        let timestamp = Int64(Date().timeIntervalSince1970 * 1000)
+        audioFilename = getDocumentsDirectory().appendingPathComponent("\(Constants.AUDIO_FILE_NAME_PREFIX)_\(timestamp)_\(audiosCount+1).m4a")
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -217,21 +219,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder = nil
         
         if success {
-            let audiosCount = audioItems?.count ?? 0;
-            let url = getDocumentsDirectory().appendingPathComponent("\(Constants.AUDIO_FILE_NAME_PREFIX)_\(audiosCount+1).m4a")
-            do {
-                recordedAudio = try AVAudioPlayer(contentsOf: url)
-                recordedAudio?.play()
-            } catch {
-                // couldn't load file :(
-            }
             recordingState = .notRecording
-            
             stopTimer()
             let dateTime = Date();
-            createNewAudioItem(filepath: url, dateTime: dateTime, transcribed: "sample")
+            createNewAudioItem(filepath: audioFilename, dateTime: dateTime, transcribed: "sample")
             fetchAudios()
-            audioUrlToTextAndSave(url: url)
+            audioUrlToTextAndSave(url: audioFilename)
             
             
             //recordButton.setTitle("Tap to Re-record", for: .normal)
