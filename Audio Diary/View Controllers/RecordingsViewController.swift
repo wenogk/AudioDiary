@@ -65,11 +65,13 @@ class RecordingsViewController: UIViewController, UITableViewDataSource, UITable
      
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recordedItem", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recordedItem", for: indexPath) as! RecordedItemTableViewCell
+        
         
         let audioItem = self.audioItems![indexPath.row]
         
-        cell.textLabel?.text = "\(audioItem.dateTime!) \(audioItem.transcribed!)";
+        cell.setupCell(audioItem: audioItem)
+        
         return cell;
         
      }
