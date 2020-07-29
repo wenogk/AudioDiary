@@ -32,9 +32,21 @@ class RecordedItemTableViewCell: UITableViewCell {
         formatter.pmSymbol = "PM"
         let dateString = formatter.string(from: audioItem.dateTime!)
         dateLabel.text = dateString
-        
+
         excerptLabel.text = audioItem.transcribed!
-    }
+        
+        //set background color of table cell subview based on model classification
+            var color:UIColor!
+            // change color to green or red based on whether it is a more positive or negative text
+            if(audioItem.negativeProbability > audioItem.positiveProbability) {
+                color = UIColor(red: 1, green: 0, blue: 0, alpha: CGFloat(audioItem.negativeProbability))
+            } else {
+                color = UIColor(red: 0, green: 1, blue: 0, alpha: CGFloat(audioItem.positiveProbability))
+            }
+            
+            mainCellHolder.backgroundColor = color;
+        }
+        
     
     override func awakeFromNib() {
         super.awakeFromNib()
