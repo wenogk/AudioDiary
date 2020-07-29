@@ -11,6 +11,8 @@
 		D1835FF624D0D78B0035E791 /* AudioItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1835FF424D0D78B0035E791 /* AudioItem+CoreDataClass.swift */; };
 		D1835FF724D0D78B0035E791 /* AudioItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1835FF524D0D78B0035E791 /* AudioItem+CoreDataProperties.swift */; };
 		D1835FF924D174CB0035E791 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1835FF824D174CB0035E791 /* Constants.swift */; };
+		D1835FFE24D1A8420035E791 /* SentimentClassificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1835FFD24D1A8420035E791 /* SentimentClassificationService.swift */; };
+		D183600024D1A85B0035E791 /* VKSentimentAnalysis.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D1835FFF24D1A85B0035E791 /* VKSentimentAnalysis.mlmodel */; };
 		D1FCF2EA24CC4E1800BD5477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF2E924CC4E1800BD5477 /* AppDelegate.swift */; };
 		D1FCF2EC24CC4E1800BD5477 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF2EB24CC4E1800BD5477 /* SceneDelegate.swift */; };
 		D1FCF2F124CC4E1800BD5477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1FCF2EF24CC4E1800BD5477 /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 		D1835FF424D0D78B0035E791 /* AudioItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D1835FF524D0D78B0035E791 /* AudioItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D1835FF824D174CB0035E791 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D1835FFD24D1A8420035E791 /* SentimentClassificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentClassificationService.swift; sourceTree = "<group>"; };
+		D1835FFF24D1A85B0035E791 /* VKSentimentAnalysis.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = VKSentimentAnalysis.mlmodel; sourceTree = "<group>"; };
 		D1FCF2E624CC4E1800BD5477 /* AudioDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1FCF2E924CC4E1800BD5477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1FCF2EB24CC4E1800BD5477 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +66,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D1835FFA24D1A5EB0035E791 /* ML */ = {
+			isa = PBXGroup;
+			children = (
+				D1835FFD24D1A8420035E791 /* SentimentClassificationService.swift */,
+				D1835FFF24D1A85B0035E791 /* VKSentimentAnalysis.mlmodel */,
+			);
+			path = ML;
+			sourceTree = "<group>";
+		};
 		D1FCF2DD24CC4E1800BD5477 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +94,7 @@
 		D1FCF2E824CC4E1800BD5477 /* Audio Diary */ = {
 			isa = PBXGroup;
 			children = (
+				D1835FFA24D1A5EB0035E791 /* ML */,
 				D1835FEF24D0CF510035E791 /* Model */,
 				D1FCF30824CECDD900BD5477 /* View Controllers */,
 				D1FCF2E924CC4E1800BD5477 /* AppDelegate.swift */,
@@ -184,7 +198,9 @@
 				D1835FE824CF83760035E791 /* TabBarController.swift in Sources */,
 				D1835FF724D0D78B0035E791 /* AudioItem+CoreDataProperties.swift in Sources */,
 				D1FCF2EA24CC4E1800BD5477 /* AppDelegate.swift in Sources */,
+				D183600024D1A85B0035E791 /* VKSentimentAnalysis.mlmodel in Sources */,
 				D1FCF2F424CC4E1800BD5477 /* Audio_Diary.xcdatamodeld in Sources */,
+				D1835FFE24D1A8420035E791 /* SentimentClassificationService.swift in Sources */,
 				D1FCF2EC24CC4E1800BD5477 /* SceneDelegate.swift in Sources */,
 				D1FCF30124CECD7B00BD5477 /* RecordViewController.swift in Sources */,
 				D1FCF30524CECD9B00BD5477 /* StatsViewController.swift in Sources */,

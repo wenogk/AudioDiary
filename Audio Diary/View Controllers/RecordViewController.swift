@@ -87,9 +87,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             recognizer?.recognitionTask(with: request) { result, error in
                 guard error == nil else { print("Error: \(error!)"); return }
                 guard let result = result else { print("No result!"); return }
-                
-                print(result.bestTranscription.formattedString)
-                self.updateTranscribed(filepath: url, transcribed: result.bestTranscription.formattedString)
+                let transcribedText = result.bestTranscription.formattedString
+                print(transcribedText)
+                self.updateTranscribed(filepath: url, transcribed: transcribedText)
+                print(SentimentClassificationService.instance.prediction(from: transcribedText)?.emoji)
             }
         } else {
             print("Device doesn't support speech recognition")
