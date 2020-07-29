@@ -20,5 +20,7 @@ extension AudioItem {
     @NSManaged public var audioFilePath: URL?
     @NSManaged public var dateTime: Date?
     @NSManaged public var transcribed: String?
+    @NSManaged public var positiveProbability: Double
+    @NSManaged public var negativeProbability: Double
 
 }

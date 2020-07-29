@@ -17,7 +17,9 @@ class DetailedRecordingViewController: UIViewController {
     
     @IBOutlet var titleLabel: UILabel!
     
+    @IBOutlet var positiveLabel: UILabel!
     
+    @IBOutlet var negativeLabel: UILabel!
     
     @IBOutlet var transcribedText: UITextView!
     
@@ -32,6 +34,8 @@ class DetailedRecordingViewController: UIViewController {
         //Set title label and transcribed text view to audio item info
         titleLabel.text = "\(audioItem!.dateTime!)"
         transcribedText.text = String(audioItem!.transcribed!)
+        positiveLabel.text = "Positive: \(audioItem!.positiveProbability)"
+        negativeLabel.text = "Negative: \(audioItem!.negativeProbability)"
         
     }
     

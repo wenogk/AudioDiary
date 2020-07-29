@@ -141,7 +141,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         
         if audioItem != nil {
             audioItem?.transcribed = transcribed;
-        
+            
+            if(classificationDictionary != nil) {
+                audioItem?.negativeProbability = classificationDictionary!["Neg"]!
+                audioItem?.positiveProbability = classificationDictionary!["Pos"]!
+            }
+            
             
             do {
                 try self.context.save()
