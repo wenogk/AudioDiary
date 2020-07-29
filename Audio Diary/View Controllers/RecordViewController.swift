@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import CoreData
+import Speech
 
 class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     
@@ -73,15 +74,34 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         }
         print(recordingState)
     }
+    // MARK: - SFSpeechRecognizer stuff
     
-    // MARK: - Core Data Function
+    func audioUrlToTextAndSave(url:URL) {
+        let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
+        let request = SFSpeechURLRecognitionRequest(url: url)
+        
+        request.shouldReportPartialResults = false
+        if (recognizer?.isAvailable)! {
+            
+            recognizer?.recognitionTask(with: request) { result, error in
+                guard error == nil else { print("Error: \(error!)"); return }
+                guard let result = result else { print("No result!"); return }
+                
+                print(result.bestTranscription.formattedString)
+                self.updateTranscribed(filepath: url, transcribed: result.bestTranscription.formattedString)
+            }
+        } else {
+            print("Device doesn't support speech recognition")
+        }
+    }
+    // MARK: - Core Data Functions
     
     func fetchAudios() {
         do {
-                   self.audioItems = try context.fetch(AudioItem.fetchRequest())
-               } catch {
-                   
-               }
+            self.audioItems = try context.fetch(AudioItem.fetchRequest())
+        } catch {
+            
+        }
     }
     
     func createNewAudioItem(filepath:URL, dateTime date:Date, transcribed: String) {
@@ -96,6 +116,27 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             try self.context.save()
         } catch {
             print("error saving data")
+        }
+        
+    }
+    
+    func updateTranscribed(filepath:URL, transcribed: String) {
+        guard audioItems != nil else { return; }
+        var audioItem:AudioItem?
+        for item in audioItems! {
+            if item.audioFilePath! == filepath {
+                audioItem = item;
+            }
+        }
+        
+        if audioItem != nil {
+            audioItem?.transcribed = transcribed;
+            
+            do {
+                try self.context.save()
+            } catch {
+                print("error updating transcribed")
+            }
         }
         
     }
@@ -148,7 +189,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     func startRecording() {
         
         let audiosCount = audioItems?.count ?? 0;
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("\(Constants.AUDIO_FILE_NAME_PREFIX)_\(audiosCount).m4a")
+        let audioFilename = getDocumentsDirectory().appendingPathComponent("\(Constants.AUDIO_FILE_NAME_PREFIX)_\(audiosCount+1).m4a")
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -177,7 +218,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         
         if success {
             let audiosCount = audioItems?.count ?? 0;
-            let url = getDocumentsDirectory().appendingPathComponent("\(Constants.AUDIO_FILE_NAME_PREFIX)_\(audiosCount).m4a")
+            let url = getDocumentsDirectory().appendingPathComponent("\(Constants.AUDIO_FILE_NAME_PREFIX)_\(audiosCount+1).m4a")
             do {
                 recordedAudio = try AVAudioPlayer(contentsOf: url)
                 recordedAudio?.play()
@@ -190,6 +231,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             let dateTime = Date();
             createNewAudioItem(filepath: url, dateTime: dateTime, transcribed: "sample")
             fetchAudios()
+            audioUrlToTextAndSave(url: url)
             
             
             //recordButton.setTitle("Tap to Re-record", for: .normal)

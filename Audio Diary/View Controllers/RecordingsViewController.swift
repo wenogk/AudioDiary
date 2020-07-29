@@ -69,7 +69,7 @@ class RecordingsViewController: UIViewController, UITableViewDataSource, UITable
         
         let audioItem = self.audioItems![indexPath.row]
         
-        cell.textLabel?.text = "\(audioItem.dateTime!)";
+        cell.textLabel?.text = "\(audioItem.dateTime!) \(audioItem.transcribed!)";
         return cell;
         
      }
