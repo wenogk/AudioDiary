@@ -11,8 +11,9 @@ import AVFoundation
 import CoreData
 import Speech
 
+
+
 class RecordViewController: UIViewController, AVAudioRecorderDelegate {
-    
     
     enum recordingStates {
         case notRecording
@@ -76,6 +77,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         print(recordingState)
     }
     
+    func sendAudioItemUpdateNotification() {
+        let nc = NotificationCenter.default
+        nc.post(name: Notification.Name("audioItemUpdate"), object: nil)
+    }
     
     // MARK: - SFSpeechRecognizer stuff
     
@@ -98,11 +103,14 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
                 
                 //call the function that updates the model with the new transcribed text and classification values
                 self.updateTranscribedAndClassification(filepath: url, transcribed: transcribedText, classificationDictionary: sentimentAnalysisClassificationDictionary)
+                
+                //reload tableView
             }
         } else {
             print("Device doesn't support speech recognition")
         }
     }
+    
     // MARK: - Core Data Functions
     
     func fetchAudios() {
@@ -123,6 +131,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         
         do {
             try self.context.save()
+            sendAudioItemUpdateNotification()
         } catch {
             print("error saving data")
         }
@@ -150,6 +159,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             
             do {
                 try self.context.save()
+                sendAudioItemUpdateNotification()
             } catch {
                 print("error updating transcribed")
             }
@@ -237,7 +247,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             recordingState = .notRecording
             stopTimer()
             let dateTime = Date();
-            createNewAudioItem(filepath: audioFilename, dateTime: dateTime, transcribed: "sample")
+            createNewAudioItem(filepath: audioFilename, dateTime: dateTime, transcribed: "loading...")
             fetchAudios()
             audioUrlToTextAndSave(url: audioFilename)
             

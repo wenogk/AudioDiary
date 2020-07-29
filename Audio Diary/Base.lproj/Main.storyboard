@@ -61,6 +61,10 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EBc-qA-Bkc">
+                                <rect key="frame" x="16" y="75" width="382" height="419"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -77,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17k-QN-qMN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="191" y="828"/>
+            <point key="canvasLocation" x="189.85507246376812" y="827.67857142857144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="26g-ag-we4">
@@ -136,12 +140,12 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="excerpt" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJM-kn-ooe">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="excerpt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJM-kn-ooe">
                                                                     <rect key="frame" x="0.0" y="39" width="384" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="S5P-7k-iw6"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -204,35 +208,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="yZP-7v-pHV">
-                                <rect key="frame" x="10" y="140" width="394" height="673"/>
+                                <rect key="frame" x="10" y="98" width="394" height="715"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUU-Xw-vkg">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="22"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="64"/>
                                         <state key="normal" image="play.circle" catalog="system"/>
                                         <connections>
                                             <action selector="playButtonTapped:" destination="frV-5X-Tjn" eventType="touchUpInside" id="KM2-Ix-f3E"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QwS-Cd-Pgz">
-                                        <rect key="frame" x="0.0" y="37" width="394" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="79" width="394" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Positive: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I69-AF-K8w">
-                                        <rect key="frame" x="0.0" y="72.5" width="394" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="114.5" width="394" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Negative:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbL-3O-pLL">
-                                        <rect key="frame" x="0.0" y="108" width="394" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="150" width="394" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rb8-gj-7bO">
-                                        <rect key="frame" x="0.0" y="143.5" width="394" height="529.5"/>
+                                        <rect key="frame" x="0.0" y="185.5" width="394" height="529.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -246,12 +250,12 @@
                         <constraints>
                             <constraint firstItem="4XC-xf-4fR" firstAttribute="trailing" secondItem="yZP-7v-pHV" secondAttribute="trailing" constant="10" id="GLz-zQ-Ydw"/>
                             <constraint firstItem="yZP-7v-pHV" firstAttribute="leading" secondItem="4XC-xf-4fR" secondAttribute="leading" constant="10" id="Oud-Ks-quI"/>
-                            <constraint firstItem="yZP-7v-pHV" firstAttribute="top" secondItem="4XC-xf-4fR" secondAttribute="top" id="bN2-yi-waB"/>
+                            <constraint firstItem="yZP-7v-pHV" firstAttribute="top" secondItem="4XC-xf-4fR" secondAttribute="top" constant="10" id="bN2-yi-waB"/>
                             <constraint firstItem="4XC-xf-4fR" firstAttribute="bottom" secondItem="yZP-7v-pHV" secondAttribute="bottom" id="dg5-eR-slD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4XC-xf-4fR"/>
                     </view>
-                    <navigationItem key="navigationItem" id="HZo-lx-TxS"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="HZo-lx-TxS"/>
                     <connections>
                         <outlet property="negativeLabel" destination="QbL-3O-pLL" id="dSU-1q-n4c"/>
                         <outlet property="positiveLabel" destination="I69-AF-K8w" id="c4V-1E-bro"/>

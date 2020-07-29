@@ -11,13 +11,13 @@ import CoreData
 
 class RecordingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
     @IBOutlet weak var tableView: UITableView!
     
     //Reference to managed object context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
     
     var audioItems:[AudioItem]?;
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +27,21 @@ class RecordingsViewController: UIViewController, UITableViewDataSource, UITable
         tableView.delegate = self;
         tableView.dataSource = self;
         
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(shouldReload), name: Notification.Name("audioItemUpdate"), object: nil)
         
     }
+    
+    @objc func shouldReload() {
+         self.tableView.reloadData()
+       }
     
     override func viewDidAppear(_ animated: Bool) {
         //Get audio items from Core Data
         fetchAudioItems();
     }
     // MARK: - Core Data Fetch Methods
+    
     
     func fetchAudioItems() {
         
@@ -57,6 +64,7 @@ class RecordingsViewController: UIViewController, UITableViewDataSource, UITable
         
         
     }
+    
     // MARK: - Table view methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

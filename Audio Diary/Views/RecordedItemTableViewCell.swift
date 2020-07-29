@@ -38,7 +38,9 @@ class RecordedItemTableViewCell: UITableViewCell {
         //set background color of table cell subview based on model classification
             var color:UIColor!
             // change color to green or red based on whether it is a more positive or negative text
-            if(audioItem.negativeProbability > audioItem.positiveProbability) {
+        if(audioItem.transcribed == "loading...") {
+            color = UIColor(red: 1, green: 0.651, blue: 0.298, alpha: 1)
+        } else if(audioItem.negativeProbability > audioItem.positiveProbability) {
                 color = UIColor(red: 1, green: 0, blue: 0, alpha: CGFloat(audioItem.negativeProbability))
             } else {
                 color = UIColor(red: 0, green: 1, blue: 0, alpha: CGFloat(audioItem.positiveProbability))
