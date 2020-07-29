@@ -14,9 +14,13 @@ class RecordedItemTableViewCell: UITableViewCell {
     
     @IBOutlet var excerptLabel: UILabel!
     
+    @IBOutlet var mainCellHolder: UIView!
+    
     var audioItem:AudioItem?;
     
     func setupCell(audioItem: AudioItem) {
+        
+        mainCellHolder.layer.cornerRadius = 8  
         
         self.audioItem = audioItem;
         
