@@ -75,6 +75,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         }
         print(recordingState)
     }
+    
+    
     // MARK: - SFSpeechRecognizer stuff
     
     func audioUrlToTextAndSave(url:URL) {
@@ -87,10 +89,15 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             recognizer?.recognitionTask(with: request) { result, error in
                 guard error == nil else { print("Error: \(error!)"); return }
                 guard let result = result else { print("No result!"); return }
+                
+                // get the best transcribed version of the audio file as a string
                 let transcribedText = result.bestTranscription.formattedString
-                print(transcribedText)
-                self.updateTranscribed(filepath: url, transcribed: transcribedText)
-                print(SentimentClassificationService.instance.prediction(from: transcribedText)?.emoji)
+                
+                //Classify transcribed text using sentiment analysis Core ML model
+                let sentimentAnalysisClassificationDictionary = SentimentClassificationService.instance.prediction(from: transcribedText)
+                
+                //call the function that updates the model with the new transcribed text and classification values
+                self.updateTranscribedAndClassification(filepath: url, transcribed: transcribedText, classificationDictionary: sentimentAnalysisClassificationDictionary)
             }
         } else {
             print("Device doesn't support speech recognition")
@@ -122,7 +129,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         
     }
     
-    func updateTranscribed(filepath:URL, transcribed: String) {
+    func updateTranscribedAndClassification(filepath:URL, transcribed: String, classificationDictionary: [String:Double]?) {
+        
         guard audioItems != nil else { return; }
         var audioItem:AudioItem?
         for item in audioItems! {
@@ -133,6 +141,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         
         if audioItem != nil {
             audioItem?.transcribed = transcribed;
+        
             
             do {
                 try self.context.save()

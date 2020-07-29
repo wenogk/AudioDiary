@@ -56,7 +56,7 @@ final class SentimentClassificationService {
         return wordCount
     }
     
-    func prediction(from text: String) -> Sentiment? {
+    func prediction(from text: String) -> [String: Double]? {
         do {
             let inputFeatures = featuresFrom(text: text)
             guard inputFeatures.count > 1 else {
@@ -64,18 +64,19 @@ final class SentimentClassificationService {
             }
             
             let output = try model.prediction(input: inputFeatures)
-            print( "class probability: \(output.classProbability) -- label:  \(output.classLabel)" )
-            switch output.classLabel {
-            case "Pos":
-                return Sentiment.Positive
-            case "Neg":
-                return Sentiment.Negetive
-            default:
-                return Sentiment.Neutral
-            }
+            return output.classProbability
+            //print( "class probability: \(output.classProbability) -- label:  \(output.classLabel)" )
+//            switch output.classLabel {
+//            case "Pos":
+//                return Sentiment.Positive
+//            case "Neg":
+//                return Sentiment.Negetive
+//            default:
+//                return Sentiment.Neutral
+//            }
             
         } catch {
-            return Sentiment.Neutral
+            return nil
         }
     }
 }
