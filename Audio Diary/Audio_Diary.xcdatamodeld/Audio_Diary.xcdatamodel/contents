@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E266" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AudioItem" representedClassName="AudioItem" syncable="YES">
-        <attribute name="audioFilePath" optional="YES" attributeType="URI"/>
+        <attribute name="audioFileName" optional="YES" attributeType="String"/>
         <attribute name="dateTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="negativeProbability" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="positiveProbability" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>

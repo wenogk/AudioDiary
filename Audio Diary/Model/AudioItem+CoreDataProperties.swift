@@ -2,7 +2,7 @@
 //  AudioItem+CoreDataProperties.swift
 //  AudioDiary
 //
-//  Created by Romeno Wenogk Fernando on 29/07/2020.
+//  Created by Romeno Wenogk Fernando on 30/07/2020.
 //  Copyright © 2020 Romeno Wenogk Fernando. All rights reserved.
 //
 //
@@ -17,10 +17,10 @@ extension AudioItem {
         return NSFetchRequest<AudioItem>(entityName: "AudioItem")
     }
 
-    @NSManaged public var audioFilePath: URL?
+    @NSManaged public var audioFileName: String?
     @NSManaged public var dateTime: Date?
-    @NSManaged public var transcribed: String?
-    @NSManaged public var positiveProbability: Double
     @NSManaged public var negativeProbability: Double
+    @NSManaged public var positiveProbability: Double
+    @NSManaged public var transcribed: String?
 
 }

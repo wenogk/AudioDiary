@@ -11,9 +11,9 @@
 		D1835FF924D174CB0035E791 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1835FF824D174CB0035E791 /* Constants.swift */; };
 		D1835FFE24D1A8420035E791 /* SentimentClassificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1835FFD24D1A8420035E791 /* SentimentClassificationService.swift */; };
 		D183600024D1A85B0035E791 /* VKSentimentAnalysis.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D1835FFF24D1A85B0035E791 /* VKSentimentAnalysis.mlmodel */; };
-		D183600324D1B0480035E791 /* AudioItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D183600124D1B0480035E791 /* AudioItem+CoreDataClass.swift */; };
-		D183600424D1B0480035E791 /* AudioItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D183600224D1B0480035E791 /* AudioItem+CoreDataProperties.swift */; };
 		D183600724D1B48A0035E791 /* RecordedItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D183600624D1B48A0035E791 /* RecordedItemTableViewCell.swift */; };
+		D183601024D2B9710035E791 /* AudioItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D183600E24D2B9710035E791 /* AudioItem+CoreDataClass.swift */; };
+		D183601124D2B9710035E791 /* AudioItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D183600F24D2B9710035E791 /* AudioItem+CoreDataProperties.swift */; };
 		D1FCF2EA24CC4E1800BD5477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF2E924CC4E1800BD5477 /* AppDelegate.swift */; };
 		D1FCF2EC24CC4E1800BD5477 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF2EB24CC4E1800BD5477 /* SceneDelegate.swift */; };
 		D1FCF2F124CC4E1800BD5477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1FCF2EF24CC4E1800BD5477 /* Main.storyboard */; };
@@ -31,9 +31,9 @@
 		D1835FF824D174CB0035E791 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D1835FFD24D1A8420035E791 /* SentimentClassificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentClassificationService.swift; sourceTree = "<group>"; };
 		D1835FFF24D1A85B0035E791 /* VKSentimentAnalysis.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = VKSentimentAnalysis.mlmodel; sourceTree = "<group>"; };
-		D183600124D1B0480035E791 /* AudioItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioItem+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D183600224D1B0480035E791 /* AudioItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D183600624D1B48A0035E791 /* RecordedItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedItemTableViewCell.swift; sourceTree = "<group>"; };
+		D183600E24D2B9710035E791 /* AudioItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D183600F24D2B9710035E791 /* AudioItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D1FCF2E624CC4E1800BD5477 /* AudioDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1FCF2E924CC4E1800BD5477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1FCF2EB24CC4E1800BD5477 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,8 +62,8 @@
 		D1835FEF24D0CF510035E791 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D183600124D1B0480035E791 /* AudioItem+CoreDataClass.swift */,
-				D183600224D1B0480035E791 /* AudioItem+CoreDataProperties.swift */,
+				D183600E24D2B9710035E791 /* AudioItem+CoreDataClass.swift */,
+				D183600F24D2B9710035E791 /* AudioItem+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,15 +204,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1FCF30724CECDD300BD5477 /* DetailedRecordingViewController.swift in Sources */,
-				D183600424D1B0480035E791 /* AudioItem+CoreDataProperties.swift in Sources */,
-				D183600324D1B0480035E791 /* AudioItem+CoreDataClass.swift in Sources */,
 				D1835FF924D174CB0035E791 /* Constants.swift in Sources */,
 				D1835FE824CF83760035E791 /* TabBarController.swift in Sources */,
 				D1FCF2EA24CC4E1800BD5477 /* AppDelegate.swift in Sources */,
 				D183600024D1A85B0035E791 /* VKSentimentAnalysis.mlmodel in Sources */,
+				D183601024D2B9710035E791 /* AudioItem+CoreDataClass.swift in Sources */,
 				D1FCF2F424CC4E1800BD5477 /* Audio_Diary.xcdatamodeld in Sources */,
 				D183600724D1B48A0035E791 /* RecordedItemTableViewCell.swift in Sources */,
 				D1835FFE24D1A8420035E791 /* SentimentClassificationService.swift in Sources */,
+				D183601124D2B9710035E791 /* AudioItem+CoreDataProperties.swift in Sources */,
 				D1FCF2EC24CC4E1800BD5477 /* SceneDelegate.swift in Sources */,
 				D1FCF30124CECD7B00BD5477 /* RecordViewController.swift in Sources */,
 				D1FCF30524CECD9B00BD5477 /* StatsViewController.swift in Sources */,

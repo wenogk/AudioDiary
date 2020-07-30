@@ -31,7 +31,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     var audioRecorder: AVAudioRecorder!
     var recordedAudio: AVAudioPlayer?
     var recordingState: recordingStates = .notRecording;
-    var audioFilename: URL!
+    var audioFilePath: URL!
+    var audioJustFileName: String!
     
     //Timer instance variables
     weak var timer: Timer?
@@ -84,8 +85,9 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
     
     // MARK: - SFSpeechRecognizer stuff
     
-    func audioUrlToTextAndSave(url:URL) {
+    func audioUrlToTextAndSave(fileName:String) {
         let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
+        let url =  getDocumentsDirectory().appendingPathComponent(fileName)
         let request = SFSpeechURLRecognitionRequest(url: url)
         
         request.shouldReportPartialResults = false
@@ -102,7 +104,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
                 let sentimentAnalysisClassificationDictionary = SentimentClassificationService.instance.prediction(from: transcribedText)
                 
                 //call the function that updates the model with the new transcribed text and classification values
-                self.updateTranscribedAndClassification(filepath: url, transcribed: transcribedText, classificationDictionary: sentimentAnalysisClassificationDictionary)
+                self.updateTranscribedAndClassification(fileName: fileName, transcribed: transcribedText, classificationDictionary: sentimentAnalysisClassificationDictionary)
                 
                 //reload tableView
             }
@@ -121,11 +123,11 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
-    func createNewAudioItem(filepath:URL, dateTime date:Date, transcribed: String) {
+    func createNewAudioItem(fileName:String, dateTime date:Date, transcribed: String) {
         
         let newAudioItem = AudioItem(context: self.context)
         
-        newAudioItem.audioFilePath = filepath;
+        newAudioItem.audioFileName = fileName;
         newAudioItem.dateTime = date;
         newAudioItem.transcribed = transcribed;
         
@@ -138,12 +140,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         
     }
     
-    func updateTranscribedAndClassification(filepath:URL, transcribed: String, classificationDictionary: [String:Double]?) {
+    func updateTranscribedAndClassification(fileName:String, transcribed: String, classificationDictionary: [String:Double]?) {
         
         guard audioItems != nil else { return; }
         var audioItem:AudioItem?
         for item in audioItems! {
-            if item.audioFilePath! == filepath {
+            if item.audioFileName! == fileName {
                 audioItem = item;
             }
         }
@@ -216,7 +218,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         
         let audiosCount = audioItems?.count ?? 0;
         let timestamp = Int64(Date().timeIntervalSince1970 * 1000)
-        audioFilename = getDocumentsDirectory().appendingPathComponent("\(Constants.AUDIO_FILE_NAME_PREFIX)_\(timestamp)_\(audiosCount+1).m4a")
+        audioJustFileName = "\(Constants.AUDIO_FILE_NAME_PREFIX)_\(timestamp)_\(audiosCount+1).m4a"
+        audioFilePath = getDocumentsDirectory().appendingPathComponent(audioJustFileName)
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -227,7 +230,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
         
         do {
             
-            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
+            audioRecorder = try AVAudioRecorder(url: audioFilePath, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
             recordingState = .recording;
@@ -247,9 +250,9 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate {
             recordingState = .notRecording
             stopTimer()
             let dateTime = Date();
-            createNewAudioItem(filepath: audioFilename, dateTime: dateTime, transcribed: "loading...")
+            createNewAudioItem(fileName: audioJustFileName, dateTime: dateTime, transcribed: "loading...")
             fetchAudios()
-            audioUrlToTextAndSave(url: audioFilename)
+            audioUrlToTextAndSave(fileName: audioJustFileName)
             
             
             //recordButton.setTitle("Tap to Re-record", for: .normal)

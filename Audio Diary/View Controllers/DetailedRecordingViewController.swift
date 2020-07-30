@@ -47,19 +47,26 @@ class DetailedRecordingViewController: UIViewController {
         }
         
         //call playAudio function to play the current audio
-        playAudio(url: audioItem!.audioFilePath!);
+        playAudio(fileName: audioItem!.audioFileName!);  
     }
     
-    func playAudio(url: URL) {
+    func playAudio(fileName: String) {
+        let url = getDocumentsDirectory().appendingPathComponent(fileName)
         do {
+            print(" playing \(url) ")
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer?.play()
         } catch {
             // couldn't load file :(
+            print("couldn't play audio :( \(error)")
         }
     }
     
-
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
     /*
     // MARK: - Navigation
 
