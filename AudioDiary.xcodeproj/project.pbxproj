@@ -24,9 +24,13 @@
 		D1FCF30324CECD8A00BD5477 /* RecordingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF30224CECD8A00BD5477 /* RecordingsViewController.swift */; };
 		D1FCF30524CECD9B00BD5477 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF30424CECD9B00BD5477 /* StatsViewController.swift */; };
 		D1FCF30724CECDD300BD5477 /* DetailedRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FCF30624CECDD300BD5477 /* DetailedRecordingViewController.swift */; };
+		D9F74A3296A36825AFDB7FC6 /* Pods_AudioDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BBBC757006CF8E5223A2659 /* Pods_AudioDiary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24347C3CDF57D1637C0988E3 /* Pods-AudioDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioDiary.release.xcconfig"; path = "Target Support Files/Pods-AudioDiary/Pods-AudioDiary.release.xcconfig"; sourceTree = "<group>"; };
+		5699DE7F1205FD79A3677F4C /* Pods-AudioDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioDiary.debug.xcconfig"; path = "Target Support Files/Pods-AudioDiary/Pods-AudioDiary.debug.xcconfig"; sourceTree = "<group>"; };
+		7BBBC757006CF8E5223A2659 /* Pods_AudioDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1835FE724CF83760035E791 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D1835FF824D174CB0035E791 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D1835FFD24D1A8420035E791 /* SentimentClassificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentClassificationService.swift; sourceTree = "<group>"; };
@@ -53,12 +57,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9F74A3296A36825AFDB7FC6 /* Pods_AudioDiary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01E716183261CF5C34248594 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7BBBC757006CF8E5223A2659 /* Pods_AudioDiary.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5ECB37922D0AD8BC0EB4BEAB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5699DE7F1205FD79A3677F4C /* Pods-AudioDiary.debug.xcconfig */,
+				24347C3CDF57D1637C0988E3 /* Pods-AudioDiary.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D1835FEF24D0CF510035E791 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +113,8 @@
 			children = (
 				D1FCF2E824CC4E1800BD5477 /* Audio Diary */,
 				D1FCF2E724CC4E1800BD5477 /* Products */,
+				5ECB37922D0AD8BC0EB4BEAB /* Pods */,
+				01E716183261CF5C34248594 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,9 +164,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1FCF2FD24CC4E1C00BD5477 /* Build configuration list for PBXNativeTarget "AudioDiary" */;
 			buildPhases = (
+				9B91F272F19C450F11A6D54E /* [CP] Check Pods Manifest.lock */,
 				D1FCF2E224CC4E1800BD5477 /* Sources */,
 				D1FCF2E324CC4E1800BD5477 /* Frameworks */,
 				D1FCF2E424CC4E1800BD5477 /* Resources */,
+				0F889725C7D7B5F506BF96A3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -197,6 +224,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F889725C7D7B5F506BF96A3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AudioDiary/Pods-AudioDiary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AudioDiary/Pods-AudioDiary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudioDiary/Pods-AudioDiary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B91F272F19C450F11A6D54E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AudioDiary-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D1FCF2E224CC4E1800BD5477 /* Sources */ = {
@@ -358,6 +427,7 @@
 		};
 		D1FCF2FE24CC4E1C00BD5477 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5699DE7F1205FD79A3677F4C /* Pods-AudioDiary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -375,6 +445,7 @@
 		};
 		D1FCF2FF24CC4E1C00BD5477 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24347C3CDF57D1637C0988E3 /* Pods-AudioDiary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
