@@ -15,17 +15,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mCQ-Z3-18d">
-                                <rect key="frame" x="5" y="49" width="404" height="759"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mCQ-Z3-18d">
+                                <rect key="frame" x="5" y="68" width="404" height="759"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="mCQ-Z3-18d" firstAttribute="leading" secondItem="QLX-0A-rIw" secondAttribute="leading" constant="5" id="Eq6-hL-KSp"/>
-                            <constraint firstItem="mCQ-Z3-18d" firstAttribute="top" secondItem="QLX-0A-rIw" secondAttribute="top" constant="5" id="NUU-7O-iRH"/>
-                            <constraint firstItem="QLX-0A-rIw" firstAttribute="bottom" secondItem="mCQ-Z3-18d" secondAttribute="bottom" constant="5" id="v4O-5P-0GN"/>
-                            <constraint firstItem="QLX-0A-rIw" firstAttribute="trailing" secondItem="mCQ-Z3-18d" secondAttribute="trailing" constant="5" id="y02-oZ-3of"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QLX-0A-rIw"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Stats" image="chart.pie.fill" catalog="system" id="N9u-eq-uJ0"/>
