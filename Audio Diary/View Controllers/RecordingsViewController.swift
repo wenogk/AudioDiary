@@ -91,8 +91,12 @@ class RecordingsViewController: UIViewController, UITableViewDataSource, UITable
             //which audio item to remove
             let audioItemToRemove = self.audioItems![indexPath.row];
             
+            //delete the actual audio file
+            self.deleteAudioFile(fileName: audioItemToRemove.audioFileName!)
+            
             //delete it from the context
             self.context.delete(audioItemToRemove)
+            
             
             do {
                 //save the context
@@ -119,7 +123,36 @@ class RecordingsViewController: UIViewController, UITableViewDataSource, UITable
         
         detailVC.audioItem = selectedAudioItem
     }
+    // MARK: - File deletion method
+    
+    func deleteAudioFile(fileName: String) {
+        
+            let fileNameToDelete = fileName
+            var filePath = ""
 
+            // Fine documents directory on device
+            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+            let documentDirectory = paths[0]
+            filePath = documentDirectory.appendingFormat("/" + fileNameToDelete)
+
+            do {
+                let fileManager = FileManager.default
+
+                // Check if file exists
+                if fileManager.fileExists(atPath: filePath) {
+                    // Delete file
+                    try fileManager.removeItem(atPath: filePath)
+                    //print("file \(filePath) deleted")
+                } else {
+                    print("File does not exist")
+                }
+
+            }
+            catch let error as NSError {
+                print("An error took place: \(error)")
+            }
+    }
+    
     /*
     // MARK: - Navigation
 

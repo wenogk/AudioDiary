@@ -12,6 +12,7 @@ import CoreData
 
 class StatsViewController: UIViewController, ChartViewDelegate {
     
+   
     @IBOutlet var stackView: UIStackView!
     
     
@@ -117,10 +118,10 @@ class StatsViewController: UIViewController, ChartViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews();
+
+        positivityLineChart.frame = CGRect(x: 0, y: 0, width: self.view.frame.width/2, height: self.view.frame.width)
         
-        positivityLineChart.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width)
-        
-        negativityLineChart.frame = CGRect(x: 0, y: self.view.frame.width, width: self.view.frame.width, height: self.view.frame.width)
+        negativityLineChart.frame = CGRect(x: 0, y: self.view.frame.width, width: self.view.frame.width/2, height: self.view.frame.width*2)
         
         
         stackView.addSubview(positivityLineChart)
