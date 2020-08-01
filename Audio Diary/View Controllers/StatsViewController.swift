@@ -22,6 +22,7 @@ class StatsViewController: UIViewController, ChartViewDelegate {
     
     var positivityLineChart = LineChartView();
     var negativityLineChart = LineChartView();
+    var pieChart = PieChartView();
     
     var audioItems:[AudioItem]?
     
@@ -32,6 +33,7 @@ class StatsViewController: UIViewController, ChartViewDelegate {
         
         positivityLineChart.delegate = self;
         negativityLineChart.delegate = self;
+        pieChart.delegate = self;
         
         //negativityLineChart.widthAnchor.constraint(equalToConstant: 400).isActive = true
        // negativityLineChart.heightAnchor.constraint(equalToConstant: 300).isActive = true
@@ -65,8 +67,10 @@ class StatsViewController: UIViewController, ChartViewDelegate {
                 //self.tableView.reloadData();
                 self.loadPositiveBarChartData()
                 self.loadNegativeBarChartData()
+                self.loadPieChartData()
                 self.positivityLineChart.notifyDataSetChanged(); // let the chart know it's data changed
                 self.negativityLineChart.notifyDataSetChanged();
+                self.pieChart.notifyDataSetChanged()
                 let contentRect: CGRect = self.stackView.subviews.reduce(into: .zero) { rect, view in
                     rect = rect.union(view.frame)
                 }
@@ -134,16 +138,58 @@ class StatsViewController: UIViewController, ChartViewDelegate {
         negativityLineChart.data = data;
     }
     
+    func loadPieChartData() {
+           
+           //transform data from audioItem array and create datapoints for positive bar chart
+           
+           var entries = [ChartDataEntry]()
+           
+           guard self.audioItems != nil else { return; }
+        
+        //two variables to keep count of total negative and positive audioItems
+        var positiveCount = 0;
+        var negativeCount = 0;
+        
+           for x in 1...self.audioItems!.count {
+            //check if more positive or negative to 'label' an audioItem as positive or negative and then add to the relevant counter
+            if(self.audioItems![x-1].positiveProbability > self.audioItems![x-1].negativeProbability) {
+                positiveCount += 1;
+            } else {
+                negativeCount += 1;
+            }
+           }
+        //let dataEntry1 =
+        //
+        print("\(positiveCount) -- \(negativeCount)")
+        entries.append(PieChartDataEntry(value: 1, label: "Positive", data:  Double(positiveCount) as AnyObject))
+        entries.append(PieChartDataEntry(value: 2, label: "Negative", data:  Double(negativeCount) as AnyObject))
+           
+        let set = PieChartDataSet(entries: entries)
+        set.colors = ChartColorTemplates.vordiplom()
+        + ChartColorTemplates.joyful()
+        + ChartColorTemplates.colorful()
+        + ChartColorTemplates.liberty()
+        + ChartColorTemplates.pastel()
+        + [UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)]
+           
+          // set.drawHorizontalHighlightIndicatorEnabled = false
+           let data = PieChartData(dataSet: set)
+           pieChart.data = data;
+       }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews();
 
         positivityLineChart.frame = CGRect(x: 0, y: 50, width: self.view.frame.width, height: self.view.frame.width)
         
-        negativityLineChart.frame = CGRect(x: 0, y: self.view.frame.width + 50, width: self.view.frame.width, height: self.view.frame.width*2)
+        negativityLineChart.frame = CGRect(x: 0, y: self.view.frame.width + 50, width: self.view.frame.width, height: self.view.frame.width)
+        
+        pieChart.frame = CGRect(x: 0, y: self.view.frame.width * 2 + 50, width: self.view.frame.width, height: self.view.frame.width)
         
         
         stackView.addSubview(positivityLineChart)
         stackView.addSubview(negativityLineChart)
+        stackView.addSubview(pieChart)
         
         
     }
