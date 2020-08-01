@@ -9,6 +9,7 @@
 import UIKit
 import Charts
 import CoreData
+import AVFoundation
 
 class StatsViewController: UIViewController, ChartViewDelegate {
     
@@ -25,6 +26,8 @@ class StatsViewController: UIViewController, ChartViewDelegate {
     var pieChart = PieChartView();
     
     var audioItems:[AudioItem]?
+    
+    var totalAudioSeconds:Double = 0.0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,6 +154,9 @@ class StatsViewController: UIViewController, ChartViewDelegate {
         var negativeCount = 0;
         
            for x in 1...self.audioItems!.count {
+            
+            totalAudioSeconds += audioDuration(for: self.audioItems![x-1].audioFileName!)
+            
             //check if more positive or negative to 'label' an audioItem as positive or negative and then add to the relevant counter
             if(self.audioItems![x-1].positiveProbability > self.audioItems![x-1].negativeProbability) {
                 positiveCount += 1;
@@ -160,6 +166,7 @@ class StatsViewController: UIViewController, ChartViewDelegate {
            }
         //let dataEntry1 =
         //
+        print("total audio duration: \(totalAudioSeconds)")
         print("\(positiveCount) -- \(negativeCount)")
         entries.append(PieChartDataEntry(value: 1, label: "Positive", data:  Double(positiveCount) as AnyObject))
         entries.append(PieChartDataEntry(value: 2, label: "Negative", data:  Double(negativeCount) as AnyObject))
@@ -193,7 +200,17 @@ class StatsViewController: UIViewController, ChartViewDelegate {
         
         
     }
-
+    //function for getting the duration of audio duration from filePath
+    func audioDuration(for resource: String) -> Double {
+        let audioFilePath = getDocumentsDirectory().appendingPathComponent(resource)
+        let asset = AVURLAsset(url: audioFilePath)
+        return Double(CMTimeGetSeconds(asset.duration))
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
     /*
     // MARK: - Navigation
 
