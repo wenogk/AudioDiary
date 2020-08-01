@@ -7,72 +7,67 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Stats-->
-        <scene sceneID="vGq-xM-5hX">
+        <!--Stats View Controller-->
+        <scene sceneID="0ef-8x-klO">
             <objects>
-                <viewController id="rt0-Dk-jPr" customClass="StatsViewController" customModule="AudioDiary" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rSl-R7-dyj">
+                <viewController id="wmP-sv-UB1" customClass="StatsViewController" customModule="AudioDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a5p-GG-4gg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Zd-ft-wyb">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w9i-ZN-YUQ">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WVr-gQ-Dez">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2h-fy-nDP">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sWg-Gq-dbB">
-                                                        <rect key="frame" x="5" y="5" width="404" height="744"/>
-                                                    </stackView>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="sWg-Gq-dbB" secondAttribute="bottom" constant="20" symbolic="YES" id="GQw-bA-CT9"/>
-                                                    <constraint firstItem="sWg-Gq-dbB" firstAttribute="top" secondItem="e2h-fy-nDP" secondAttribute="top" constant="5" id="IAu-Ju-wFl"/>
-                                                    <constraint firstItem="sWg-Gq-dbB" firstAttribute="leading" secondItem="e2h-fy-nDP" secondAttribute="leading" constant="5" id="XnV-bY-SF3"/>
-                                                    <constraint firstAttribute="trailing" secondItem="sWg-Gq-dbB" secondAttribute="trailing" constant="5" id="cAT-Yk-dyu"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="e2h-fy-nDP" firstAttribute="centerY" secondItem="WVr-gQ-Dez" secondAttribute="centerY" id="7w6-iN-Qiv"/>
-                                            <constraint firstItem="e2h-fy-nDP" firstAttribute="leading" secondItem="WVr-gQ-Dez" secondAttribute="leading" id="O8K-fD-YbT"/>
-                                            <constraint firstItem="e2h-fy-nDP" firstAttribute="centerX" secondItem="WVr-gQ-Dez" secondAttribute="centerX" id="ayZ-9z-UD4"/>
-                                            <constraint firstAttribute="trailing" secondItem="e2h-fy-nDP" secondAttribute="trailing" id="jT5-Ik-h8L"/>
-                                            <constraint firstAttribute="bottom" secondItem="e2h-fy-nDP" secondAttribute="bottom" id="ot1-0o-02b"/>
-                                            <constraint firstItem="e2h-fy-nDP" firstAttribute="top" secondItem="WVr-gQ-Dez" secondAttribute="top" id="pnb-Mw-9ba"/>
-                                        </constraints>
-                                    </scrollView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5KH-53-bAT">
+                                        <rect key="frame" x="65" y="-36" width="110" height="800"/>
+                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="WVr-gQ-Dez" firstAttribute="top" secondItem="6Zd-ft-wyb" secondAttribute="top" id="1cO-T2-GAq"/>
-                                    <constraint firstAttribute="bottom" secondItem="WVr-gQ-Dez" secondAttribute="bottom" id="Ari-JK-c3h"/>
-                                    <constraint firstItem="WVr-gQ-Dez" firstAttribute="leading" secondItem="6Zd-ft-wyb" secondAttribute="leading" id="ICf-fd-lwc"/>
-                                    <constraint firstAttribute="trailing" secondItem="WVr-gQ-Dez" secondAttribute="trailing" id="eRB-nh-YFp"/>
+                                    <constraint firstItem="5KH-53-bAT" firstAttribute="bottom" secondItem="0Nn-bl-VZt" secondAttribute="bottom" constant="164" id="GgQ-ag-bHa"/>
+                                    <constraint firstItem="5KH-53-bAT" firstAttribute="trailing" secondItem="0Nn-bl-VZt" secondAttribute="trailing" constant="175" id="LeC-Zu-dB8"/>
+                                    <constraint firstItem="0Nn-bl-VZt" firstAttribute="top" secondItem="5KH-53-bAT" secondAttribute="top" constant="36" id="Nl1-aT-K1W"/>
+                                    <constraint firstItem="5KH-53-bAT" firstAttribute="leading" secondItem="0Nn-bl-VZt" secondAttribute="leading" constant="65" id="XDX-h4-WHz"/>
+                                    <constraint firstItem="5KH-53-bAT" firstAttribute="width" secondItem="inZ-vR-hBF" secondAttribute="width" multiplier="0.2657" id="iQB-rH-zPu"/>
                                 </constraints>
-                            </view>
+                                <viewLayoutGuide key="contentLayoutGuide" id="0Nn-bl-VZt"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="inZ-vR-hBF"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="8Dm-1T-N7X" firstAttribute="bottom" secondItem="6Zd-ft-wyb" secondAttribute="bottom" id="6hy-Kv-iyr"/>
-                            <constraint firstItem="6Zd-ft-wyb" firstAttribute="top" secondItem="8Dm-1T-N7X" secondAttribute="top" id="KMt-rQ-0uC"/>
-                            <constraint firstItem="6Zd-ft-wyb" firstAttribute="leading" secondItem="8Dm-1T-N7X" secondAttribute="leading" id="fKF-gx-hfk"/>
-                            <constraint firstItem="8Dm-1T-N7X" firstAttribute="trailing" secondItem="6Zd-ft-wyb" secondAttribute="trailing" id="hQA-mv-2jl"/>
+                            <constraint firstItem="bIw-Cr-3kn" firstAttribute="trailing" secondItem="w9i-ZN-YUQ" secondAttribute="trailing" id="E1J-HJ-Jid"/>
+                            <constraint firstItem="bIw-Cr-3kn" firstAttribute="bottom" secondItem="w9i-ZN-YUQ" secondAttribute="bottom" id="Mca-qN-smx"/>
+                            <constraint firstItem="w9i-ZN-YUQ" firstAttribute="leading" secondItem="bIw-Cr-3kn" secondAttribute="leading" id="fXV-q9-snc"/>
+                            <constraint firstItem="w9i-ZN-YUQ" firstAttribute="top" secondItem="bIw-Cr-3kn" secondAttribute="top" id="uNk-bG-HXp"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="8Dm-1T-N7X"/>
+                        <viewLayoutGuide key="safeArea" id="bIw-Cr-3kn"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Stats" image="chart.pie.fill" catalog="system" id="N9u-eq-uJ0"/>
+                    <navigationItem key="navigationItem" id="ane-pC-bf6"/>
                     <connections>
-                        <outlet property="stackView" destination="sWg-Gq-dbB" id="eVU-0P-bQU"/>
+                        <outlet property="scrollView" destination="w9i-ZN-YUQ" id="KBK-w2-C2C"/>
+                        <outlet property="stackView" destination="5KH-53-bAT" id="N4M-ON-0dg"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zdG-se-K8o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gwH-yR-pKo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-762.31884057971024" y="820.98214285714278"/>
+            <point key="canvasLocation" x="-1962" y="1341"/>
+        </scene>
+        <!--Statistics-->
+        <scene sceneID="47G-gf-p56">
+            <objects>
+                <navigationController title="Statistics" id="1xh-rE-AIp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="pwA-VC-EiA"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="V99-eE-fJN">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wmP-sv-UB1" kind="relationship" relationship="rootViewController" id="7tG-7b-7p4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sRo-px-yd6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1117" y="733"/>
         </scene>
         <!--Record-->
         <scene sceneID="COe-T7-Kya">
@@ -152,7 +147,7 @@
                     <connections>
                         <segue destination="teu-eK-ocF" kind="relationship" relationship="viewControllers" id="wCa-mT-xpJ"/>
                         <segue destination="I0b-Ty-Oll" kind="relationship" relationship="viewControllers" id="3ri-c6-U5r"/>
-                        <segue destination="rt0-Dk-jPr" kind="relationship" relationship="viewControllers" id="yAU-1N-tQf"/>
+                        <segue destination="1xh-rE-AIp" kind="relationship" relationship="viewControllers" id="ice-dx-lW3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lcr-99-Evy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -339,7 +334,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chart.pie.fill" catalog="system" width="128" height="124"/>
         <image name="folder" catalog="system" width="128" height="95"/>
         <image name="play.circle" catalog="system" width="128" height="121"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>

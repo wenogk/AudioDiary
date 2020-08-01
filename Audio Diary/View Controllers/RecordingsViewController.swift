@@ -140,8 +140,10 @@ class RecordingsViewController: UIViewController, UITableViewDataSource, UITable
 
                 // Check if file exists
                 if fileManager.fileExists(atPath: filePath) {
+                    
                     // Delete file
                     try fileManager.removeItem(atPath: filePath)
+                    
                     //print("file \(filePath) deleted")
                 } else {
                     print("File does not exist")
@@ -151,6 +153,7 @@ class RecordingsViewController: UIViewController, UITableViewDataSource, UITable
             catch let error as NSError {
                 print("An error took place: \(error)")
             }
+        
     }
     
     /*

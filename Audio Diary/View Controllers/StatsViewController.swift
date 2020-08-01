@@ -12,6 +12,8 @@ import CoreData
 
 class StatsViewController: UIViewController, ChartViewDelegate {
     
+    @IBOutlet var scrollView: UIScrollView!
+    
    
     @IBOutlet var stackView: UIStackView!
     
@@ -25,8 +27,20 @@ class StatsViewController: UIViewController, ChartViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Statistics"
+        
         positivityLineChart.delegate = self;
         negativityLineChart.delegate = self;
+        
+        //negativityLineChart.widthAnchor.constraint(equalToConstant: 400).isActive = true
+       // negativityLineChart.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.bounces = true
+        scrollView.alwaysBounceVertical = true
+        //scrollView.contentSize.height = 2000
+        
+        
         // Do any additional setup after loading the view.
         //positivityLineChart.backgroundColor = UIColor(red: 104/255, green: 241/255, blue: 175/255, alpha: 1)
         
@@ -53,6 +67,10 @@ class StatsViewController: UIViewController, ChartViewDelegate {
                 self.loadNegativeBarChartData()
                 self.positivityLineChart.notifyDataSetChanged(); // let the chart know it's data changed
                 self.negativityLineChart.notifyDataSetChanged();
+                let contentRect: CGRect = self.stackView.subviews.reduce(into: .zero) { rect, view in
+                    rect = rect.union(view.frame)
+                }
+                self.scrollView.contentSize = contentRect.size
                // self.barChart.invalidate(); // refresh
             }
             
@@ -119,9 +137,9 @@ class StatsViewController: UIViewController, ChartViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews();
 
-        positivityLineChart.frame = CGRect(x: 0, y: 0, width: self.view.frame.width/2, height: self.view.frame.width)
+        positivityLineChart.frame = CGRect(x: 0, y: 50, width: self.view.frame.width, height: self.view.frame.width)
         
-        negativityLineChart.frame = CGRect(x: 0, y: self.view.frame.width, width: self.view.frame.width/2, height: self.view.frame.width*2)
+        negativityLineChart.frame = CGRect(x: 0, y: self.view.frame.width + 50, width: self.view.frame.width, height: self.view.frame.width*2)
         
         
         stackView.addSubview(positivityLineChart)
