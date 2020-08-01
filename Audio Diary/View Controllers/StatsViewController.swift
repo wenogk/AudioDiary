@@ -68,9 +68,7 @@ class StatsViewController: UIViewController, ChartViewDelegate {
             
             DispatchQueue.main.async {
                 //self.tableView.reloadData();
-                self.loadPositiveBarChartData()
-                self.loadNegativeBarChartData()
-                self.loadPieChartData()
+                self.processAllAudioItemData();
                 self.positivityLineChart.notifyDataSetChanged(); // let the chart know it's data changed
                 self.negativityLineChart.notifyDataSetChanged();
                 self.pieChart.notifyDataSetChanged()
@@ -103,76 +101,45 @@ class StatsViewController: UIViewController, ChartViewDelegate {
         return set;
     }
     
-    func loadPositiveBarChartData() {
-        
-        //transform data from audioItem array and create datapoints for positive bar chart
-        
-        var entries = [ChartDataEntry]()
+    func processAllAudioItemData() {
         
         guard self.audioItems != nil else { return; }
         
-        for x in 1...self.audioItems!.count {
-            entries.append(ChartDataEntry(x: Double(x), y: self.audioItems![x-1].positiveProbability))
-        }
+        var positiveLineChartEntries = [ChartDataEntry]()
+        var negativeLineChartEntries = [ChartDataEntry]()
+        var pieChartEntries = [ChartDataEntry]()
         
-        let set = generateStyledDataSetForLineChart(entries: entries, label: "positive",fillColor: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5))
-        
-       // set.drawHorizontalHighlightIndicatorEnabled = false
-        let data = LineChartData(dataSet: set)
-        positivityLineChart.data = data;
-    }
-    
-    func loadNegativeBarChartData() {
-        
-        //transform data from audioItem array and create datapoints for positive bar chart
-        
-        var entries = [ChartDataEntry]()
-        
-        guard self.audioItems != nil else { return; }
-        
-        for x in 1...self.audioItems!.count {
-            entries.append(ChartDataEntry(x: Double(x), y: self.audioItems![x-1].negativeProbability))
-        }
-        
-        let set = generateStyledDataSetForLineChart(entries: entries, label: "negative", fillColor: UIColor(red: 1, green: 0, blue: 0, alpha: 0.5))
-        
-       // set.drawHorizontalHighlightIndicatorEnabled = false
-        let data = LineChartData(dataSet: set)
-        negativityLineChart.data = data;
-    }
-    
-    func loadPieChartData() {
-           
-           //transform data from audioItem array and create datapoints for positive bar chart
-           
-           var entries = [ChartDataEntry]()
-           
-           guard self.audioItems != nil else { return; }
-        
-        //two variables to keep count of total negative and positive audioItems
         var positiveCount = 0;
         var negativeCount = 0;
         
-           for x in 1...self.audioItems!.count {
+        for x in 1...self.audioItems!.count {
             
             totalAudioSeconds += audioDuration(for: self.audioItems![x-1].audioFileName!)
             
-            //check if more positive or negative to 'label' an audioItem as positive or negative and then add to the relevant counter
+            positiveLineChartEntries.append(ChartDataEntry(x: Double(x), y: self.audioItems![x-1].positiveProbability));
+            negativeLineChartEntries.append(ChartDataEntry(x: Double(x), y: self.audioItems![x-1].negativeProbability));
+            
             if(self.audioItems![x-1].positiveProbability > self.audioItems![x-1].negativeProbability) {
                 positiveCount += 1;
             } else {
                 negativeCount += 1;
             }
-           }
-        //let dataEntry1 =
-        //
-        print("total audio duration: \(totalAudioSeconds)")
-        print("\(positiveCount) -- \(negativeCount)")
-        entries.append(PieChartDataEntry(value: 1, label: "Positive", data:  Double(positiveCount) as AnyObject))
-        entries.append(PieChartDataEntry(value: 2, label: "Negative", data:  Double(negativeCount) as AnyObject))
+            
+        }
+        
+        let positiveLineChartSet = generateStyledDataSetForLineChart(entries: positiveLineChartEntries, label: "positive",fillColor: UIColor(red: 0, green: 1, blue: 0, alpha: 0.5))
+         let negativeLineChartSet = generateStyledDataSetForLineChart(entries: negativeLineChartEntries, label: "negative",fillColor: UIColor(red: 1, green: 0, blue: 0, alpha: 0.5))
+        // set.drawHorizontalHighlightIndicatorEnabled = false
+         let positiveLineChartData = LineChartData(dataSet: positiveLineChartSet)
+        let negativeLineChartData = LineChartData(dataSet: negativeLineChartSet)
+         positivityLineChart.data = positiveLineChartData;
+        negativityLineChart.data = negativeLineChartData;
+        
+        pieChartEntries.append(PieChartDataEntry(value: 1, label: "Positive", data:  Double(positiveCount) as AnyObject))
+        pieChartEntries.append(PieChartDataEntry(value: 2, label: "Negative", data:  Double(negativeCount) as AnyObject))
            
-        let set = PieChartDataSet(entries: entries)
-        set.colors = ChartColorTemplates.vordiplom()
+        let pieChartSet = PieChartDataSet(entries: pieChartEntries)
+        pieChartSet.colors = ChartColorTemplates.vordiplom()
         + ChartColorTemplates.joyful()
         + ChartColorTemplates.colorful()
         + ChartColorTemplates.liberty()
@@ -180,9 +147,10 @@ class StatsViewController: UIViewController, ChartViewDelegate {
         + [UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)]
            
           // set.drawHorizontalHighlightIndicatorEnabled = false
-           let data = PieChartData(dataSet: set)
-           pieChart.data = data;
-       }
+           let pieChartData = PieChartData(dataSet: pieChartSet)
+           pieChart.data = pieChartData;
+    }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews();
