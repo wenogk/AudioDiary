@@ -15,18 +15,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w9i-ZN-YUQ">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w9i-ZN-YUQ">
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5KH-53-bAT">
-                                        <rect key="frame" x="65" y="-36" width="110" height="800"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5KH-53-bAT">
+                                        <rect key="frame" x="0.0" y="-36" width="110" height="800"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="800" id="aPx-ke-dJO"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="5KH-53-bAT" firstAttribute="bottom" secondItem="0Nn-bl-VZt" secondAttribute="bottom" constant="164" id="GgQ-ag-bHa"/>
-                                    <constraint firstItem="5KH-53-bAT" firstAttribute="trailing" secondItem="0Nn-bl-VZt" secondAttribute="trailing" constant="175" id="LeC-Zu-dB8"/>
+                                    <constraint firstItem="5KH-53-bAT" firstAttribute="bottom" secondItem="0Nn-bl-VZt" secondAttribute="bottom" id="GgQ-ag-bHa"/>
+                                    <constraint firstItem="5KH-53-bAT" firstAttribute="trailing" secondItem="0Nn-bl-VZt" secondAttribute="trailing" id="LeC-Zu-dB8"/>
                                     <constraint firstItem="0Nn-bl-VZt" firstAttribute="top" secondItem="5KH-53-bAT" secondAttribute="top" constant="36" id="Nl1-aT-K1W"/>
-                                    <constraint firstItem="5KH-53-bAT" firstAttribute="leading" secondItem="0Nn-bl-VZt" secondAttribute="leading" constant="65" id="XDX-h4-WHz"/>
+                                    <constraint firstItem="5KH-53-bAT" firstAttribute="leading" secondItem="0Nn-bl-VZt" secondAttribute="leading" id="XDX-h4-WHz"/>
                                     <constraint firstItem="5KH-53-bAT" firstAttribute="width" secondItem="inZ-vR-hBF" secondAttribute="width" multiplier="0.2657" id="iQB-rH-zPu"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="0Nn-bl-VZt"/>
