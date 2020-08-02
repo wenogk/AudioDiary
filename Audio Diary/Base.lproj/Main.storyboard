@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5KH-53-bAT">
-                                        <rect key="frame" x="0.0" y="-36" width="110" height="800"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="800"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="800" id="aPx-ke-dJO"/>
                                         </constraints>
@@ -28,9 +28,9 @@
                                 <constraints>
                                     <constraint firstItem="5KH-53-bAT" firstAttribute="bottom" secondItem="0Nn-bl-VZt" secondAttribute="bottom" id="GgQ-ag-bHa"/>
                                     <constraint firstItem="5KH-53-bAT" firstAttribute="trailing" secondItem="0Nn-bl-VZt" secondAttribute="trailing" id="LeC-Zu-dB8"/>
-                                    <constraint firstItem="0Nn-bl-VZt" firstAttribute="top" secondItem="5KH-53-bAT" secondAttribute="top" constant="36" id="Nl1-aT-K1W"/>
                                     <constraint firstItem="5KH-53-bAT" firstAttribute="leading" secondItem="0Nn-bl-VZt" secondAttribute="leading" id="XDX-h4-WHz"/>
                                     <constraint firstItem="5KH-53-bAT" firstAttribute="width" secondItem="inZ-vR-hBF" secondAttribute="width" multiplier="0.2657" id="iQB-rH-zPu"/>
+                                    <constraint firstItem="5KH-53-bAT" firstAttribute="top" secondItem="w9i-ZN-YUQ" secondAttribute="top" id="kSs-Jr-JBL"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="0Nn-bl-VZt"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="inZ-vR-hBF"/>
