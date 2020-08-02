@@ -155,22 +155,26 @@ class StatsViewController: UIViewController, ChartViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews();
         
-        let heightOfDurationRecordedView:Double = 40.0
-        let padding:Double = 100.0;
-        let width:Double = Double(self.view.frame.width)
+        let heightOfDurationRecordedView:Double = 60.0
+        let padding:Double = 10.0;
+        let xVal:Double = 15.0;
+        let width:Double = Double(self.view.frame.width) - xVal*2;
         
-        let totalDurationRecordedView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: heightOfDurationRecordedView))
+        //setup the view that shows the total duration of all audios as a statistic
+        let totalDurationRecordedView = UIView(frame: CGRect(x: xVal, y: 0, width: width, height: heightOfDurationRecordedView))
+        totalDurationRecordedView.backgroundColor = UIColor(hex: "#b3ffdeff")
+        totalDurationRecordedView.layer.cornerRadius = 8
         
         let positivityLineChartY = heightOfDurationRecordedView +  padding;
-        positivityLineChart.frame = CGRect(x: 0, y: positivityLineChartY, width: width, height: width)
+        positivityLineChart.frame = CGRect(x: xVal, y: positivityLineChartY, width: width, height: width)
         
         let negativityLineChartY = heightOfDurationRecordedView + (width) + padding*2.0;
-        negativityLineChart.frame = CGRect(x: 0, y: CGFloat(negativityLineChartY), width: self.view.frame.width, height: self.view.frame.width)
+        negativityLineChart.frame = CGRect(x: xVal, y: negativityLineChartY, width: width, height: width)
         
         let pieChartY = heightOfDurationRecordedView + (width*2) + padding*3;
-        pieChart.frame = CGRect(x: 0, y: CGFloat(pieChartY), width: self.view.frame.width, height: self.view.frame.width)
+        pieChart.frame = CGRect(x: xVal, y: pieChartY, width: width, height: width)
         
-        
+        stackView.addSubview(totalDurationRecordedView)
         stackView.addSubview(positivityLineChart)
         stackView.addSubview(negativityLineChart)
         stackView.addSubview(pieChart)
