@@ -154,12 +154,21 @@ class StatsViewController: UIViewController, ChartViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews();
-
-        positivityLineChart.frame = CGRect(x: 0, y: 50, width: self.view.frame.width, height: self.view.frame.width)
         
-        negativityLineChart.frame = CGRect(x: 0, y: self.view.frame.width + 50, width: self.view.frame.width, height: self.view.frame.width)
+        let heightOfDurationRecordedView:Double = 40.0
+        let padding:Double = 100.0;
+        let width:Double = Double(self.view.frame.width)
         
-        pieChart.frame = CGRect(x: 0, y: self.view.frame.width * 2 + 50, width: self.view.frame.width, height: self.view.frame.width)
+        let totalDurationRecordedView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: heightOfDurationRecordedView))
+        
+        let positivityLineChartY = heightOfDurationRecordedView +  padding;
+        positivityLineChart.frame = CGRect(x: 0, y: positivityLineChartY, width: width, height: width)
+        
+        let negativityLineChartY = heightOfDurationRecordedView + (width) + padding*2.0;
+        negativityLineChart.frame = CGRect(x: 0, y: CGFloat(negativityLineChartY), width: self.view.frame.width, height: self.view.frame.width)
+        
+        let pieChartY = heightOfDurationRecordedView + (width*2) + padding*3;
+        pieChart.frame = CGRect(x: 0, y: CGFloat(pieChartY), width: self.view.frame.width, height: self.view.frame.width)
         
         
         stackView.addSubview(positivityLineChart)
