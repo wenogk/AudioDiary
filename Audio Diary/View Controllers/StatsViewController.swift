@@ -164,6 +164,9 @@ class StatsViewController: UIViewController, ChartViewDelegate {
         let totalDurationRecordedView = UIView(frame: CGRect(x: xVal, y: 0, width: width, height: heightOfDurationRecordedView))
         totalDurationRecordedView.backgroundColor = UIColor(hex: "#b3ffdeff")
         totalDurationRecordedView.layer.cornerRadius = 8
+        let totalDurationLabel = UILabel(frame:  CGRect(x: xVal, y: 0, width: width, height: heightOfDurationRecordedView))
+        totalDurationLabel.text = "duration: \(totalAudioSeconds)"
+        totalDurationLabel.textAlignment = .center
         
         let positivityLineChartY = heightOfDurationRecordedView +  padding;
         positivityLineChart.frame = CGRect(x: xVal, y: positivityLineChartY, width: width, height: width)
@@ -174,7 +177,9 @@ class StatsViewController: UIViewController, ChartViewDelegate {
         let pieChartY = heightOfDurationRecordedView + (width*2) + padding*3;
         pieChart.frame = CGRect(x: xVal, y: pieChartY, width: width, height: width)
         
+
         stackView.addSubview(totalDurationRecordedView)
+        stackView.addSubview(totalDurationLabel)
         stackView.addSubview(positivityLineChart)
         stackView.addSubview(negativityLineChart)
         stackView.addSubview(pieChart)
